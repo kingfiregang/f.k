@@ -618,14 +618,35 @@
             const password = document.getElementById('reg-pass').value;
 
             if (state.users.some(u => u.id === id) || state.pending.some(p => p.id === id)) {
-                window.showToast('هذا الـ ID مسجل مسبقاً أو قيد المراجعة.', 'error');
+                window.showToast('هذا الـ ID مسجل مسبقاً.', 'error');
                 return;
             }
-            state.pending.push({ id, name, level: 1, age, companyValue, weapon, skill, password });
-            localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
+
+            // قبول العضو مباشرة فور التسجيل ليظهر في الموقع فوراً
+            const newMember = {
+                id,
+                name,
+                level: 1,
+                age,
+                companyValue,
+                weapon,
+                skill,
+                password,
+                role: 'member',
+                rankId: 'recruit',
+                points: 0,
+                medals: [],
+                joinedAt: '2026'
+            };
+
+            state.users.push(newMember);
+            localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
             window.closeAuthModal();
+            renderMembers();
+            renderRanks();
             renderAdminPanel();
-            window.showToast('تم إرسال طلب الانضمام للقائد بنجاح!', 'success');
+            updateAuthUI();
+            window.showToast(`تم تسجيل العضو ${name} وانضمامه للعصابة بنجاح! 👑🔥`, 'success');
         };
 
         window.logout = function() {
@@ -678,6 +699,26 @@
                 localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
                 renderMembers();
                 window.showToast(`تم تحديث مستوى ${u.name} إلى ${u.level}`, 'success');
+            }
+        };
+
+        window.updateUserWeapon = function(id, weaponVal) {
+            const u = state.users.find(x => x.id === id);
+            if (u) {
+                u.weapon = weaponVal;
+                localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
+                renderMembers();
+                window.showToast(`تم تحديث سلاح ${u.name}`, 'success');
+            }
+        };
+
+        window.updateUserSkill = function(id, skillVal) {
+            const u = state.users.find(x => x.id === id);
+            if (u) {
+                u.skill = skillVal;
+                localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
+                renderMembers();
+                window.showToast(`تم تحديث مهارة ${u.name}`, 'success');
             }
         };
 
@@ -1087,7 +1128,14 @@
 
                     return `
                     <tr class="hover:bg-white/5">
-                        <td class="p-3">${u.name} (ID: ${u.id})</td>
+                        <td class="p-3">
+                            <div class="flex items-center gap-2">
+                                <span>${u.name} (ID: ${u.id})</span>
+                                <a href="https://wa.me/?text=${encodeURIComponent('أهلاً يا بطل ' + u.name + '، ندعوك للانضمام إلى جروب الواتساب الرسمي لعصابة KING FIRE!')}" target="_blank" class="px-2 py-1 rounded bg-green-600/20 text-green-400 hover:bg-green-600/30 text-xs font-bold" title="مراسلة عبر واتساب">
+                                    <i class="fa-brands fa-whatsapp"></i> واتساب
+                                </a>
+                            </div>
+                        </td>
                         <td class="p-3">
                             <select onchange="updateUserLevel('${u.id}', this.value)" class="bg-black border border-white/15 text-xs text-amber-300 p-1 rounded">
                                 ${userLevelOpts}
