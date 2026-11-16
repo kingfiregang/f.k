@@ -95,8 +95,8 @@
         }
 
         @keyframes pulseGlow {
-            0%, 100% { opacity: 0.75; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.03); }
+            0%, 100% { opacity: 0.85; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
         }
         .emblem-pulse {
             animation: pulseGlow 3.5s infinite ease-in-out;
@@ -197,7 +197,7 @@
                             أهلاً بك في عرين <span class="fire-text-gradient">KING FIRE</span>
                         </h2>
                         <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                            الدَّمُ بِالدَّمِ، وَالوَلَاءُ لِلْعِصَابَةِ. انضم الآن إلى عرين النار والولاء.
+                            هنا يجتمع أقوى المقاتلين تحت راية النار والتاج. سجل عضويتك الآن للوصول إلى قائمة الأعضاء، الرتب، الأوسمة، وغرفة الحروب.
                         </p>
 
                         <div id="hero-cta-area" class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
@@ -215,7 +215,7 @@
                                 <div class="text-xs text-gray-400">عضو مقاتل</div>
                             </div>
                             <div class="bg-black/50 border border-white/10 rounded-2xl p-3 text-center">
-                                <div class="text-2xl font-black text-orange-500">6</div>
+                                <div class="text-2xl font-black text-orange-500">7</div>
                                 <div class="text-xs text-gray-400">رتب قيادية</div>
                             </div>
                             <div class="bg-black/50 border border-white/10 rounded-2xl p-3 text-center">
@@ -240,9 +240,12 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-black text-white">قوانين ودستور عصابة KING FIRE</h3>
-                            <p class="text-sm text-gray-400">الدستور الرسمي للالتزام داخل عرين النار والولاء</p>
+                            <p class="text-sm text-gray-400">الالتزام التام بهذه القوانين شرط أساسي للبقاء داخل العصابة</p>
                         </div>
                     </div>
+                    <span class="px-3 py-1 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-bold">
+                        <i class="fa-solid fa-eye ml-1"></i> متاح للضيوف والأعضاء
+                    </span>
                 </div>
                 <div id="rules-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
             </div>
@@ -268,7 +271,7 @@
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-fire-card p-6 rounded-3xl border border-orange-500/20">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">قائمة مقاتلي KING FIRE</h2>
-                    <p class="text-sm text-gray-400 mt-1">تصفح جميع أعضاء العصابة، الـ ID، رتبهم، وأوسمتهم</p>
+                    <p class="text-sm text-gray-400 mt-1">تصفح جميع أعضاء العصابة، الـ ID، المستويات، الرتب، والأوسمة</p>
                 </div>
                 <div class="flex flex-wrap gap-3">
                     <div class="relative">
@@ -290,16 +293,16 @@
         <section id="view-ranks" class="hidden space-y-6">
             <div class="bg-fire-card p-6 rounded-3xl border border-orange-500/20">
                 <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">سلم الرتب والقيادة في العصابة</h2>
-                <p class="text-sm text-gray-400 mt-1">التسلسل الهرمي لرتب عصابة KING FIRE مع عرض المقاتلين في كل رتبة</p>
+                <p class="text-sm text-gray-400 mt-1">التسلسل الهرمي لرتب عصابة KING FIRE والأعضاء التابعين لكل رتبة</p>
             </div>
-            <div id="ranks-container" class="space-y-6"></div>
+            <div id="ranks-container" class="space-y-4"></div>
         </section>
 
         <!-- الأوسمة -->
         <section id="view-medals" class="hidden space-y-6">
             <div class="bg-fire-card p-6 rounded-3xl border border-orange-500/20">
-                <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">أوسمة الشرف والبطولة (شعار KING FIRE)</h2>
-                <p class="text-sm text-gray-400 mt-1">الأوسمة العشرة الرسمية المستوحاة من شعار وتاريخ العصابة مع قائمة أبطالها</p>
+                <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">أوسمة الشرف والبطولة</h2>
+                <p class="text-sm text-gray-400 mt-1">أوسمة الشرف المستوحاة من شعار عصابة KING FIRE مع أسماء الأبطال الحاصلين عليها</p>
             </div>
             <div id="medals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </section>
@@ -307,7 +310,7 @@
         <!-- الحروب -->
         <section id="view-wars" class="hidden space-y-6">
             <div class="bg-gradient-to-r from-red-950/80 via-orange-950/70 to-black border border-orange-500/40 rounded-3xl p-6 sm:p-8 text-center fire-glow relative overflow-hidden">
-                <h3 class="text-2xl sm:text-3xl font-black text-white mb-2">حرب السيطرة الكبرى ضد DARK WOLVES</h3>
+                <h3 id="war-banner-title" class="text-2xl sm:text-3xl font-black text-white mb-2">حرب السيطرة الكبرى ضد DARK WOLVES</h3>
                 <p class="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto mb-6">استعدوا جيداً، التشكيلة الأساسية ستدخل الميدان في الموعد:</p>
                 <div id="war-countdown" class="grid grid-cols-4 gap-3 max-w-md mx-auto">
                     <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div id="cd-days" class="text-2xl font-black text-amber-400">03</div><div class="text-[11px] text-gray-400">أيام</div></div>
@@ -316,15 +319,9 @@
                     <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div id="cd-secs" class="text-2xl font-black text-red-500">30</div><div class="text-[11px] text-gray-400">ثانية</div></div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="lg:col-span-1 bg-fire-card border border-amber-500/30 rounded-3xl p-6 space-y-4">
-                    <h3 class="text-xl font-black text-white border-b border-white/10 pb-3">أقوى 3 مقاتلين</h3>
-                    <div id="top-players-list" class="space-y-3"></div>
-                </div>
-                <div class="lg:col-span-2 bg-fire-card border border-orange-500/25 rounded-3xl p-6 space-y-4">
-                    <h3 class="text-xl font-black text-white border-b border-white/10 pb-3">أوامر القيادة ومواعيد الحروب</h3>
-                    <div id="announcements-list" class="space-y-4"></div>
-                </div>
+            <div class="bg-fire-card border border-orange-500/25 rounded-3xl p-6 space-y-4">
+                <h3 class="text-xl font-black text-white border-b border-white/10 pb-3">أوامر القيادة ومواعيد الحروب</h3>
+                <div id="announcements-list" class="space-y-4"></div>
             </div>
         </section>
 
@@ -352,18 +349,29 @@
                 <button onclick="resetAllData()" class="px-4 py-2.5 rounded-xl bg-red-600/20 border border-red-500/40 text-red-300 text-xs font-bold">إعادة ضبط</button>
             </div>
 
+            <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6 space-y-4">
+                <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                    <h3 class="text-xl font-bold text-orange-400">قوانين العصابة الدائمة</h3>
+                    <button onclick="saveGangRulesChanges()" class="gold-btn px-4 py-2 rounded-xl text-xs"><i class="fa-solid fa-floppy-disk ml-1"></i> حفظ القوانين</button>
+                </div>
+                <div id="admin-rules-list" class="space-y-3"></div>
+            </div>
+
             <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6">
                 <h3 class="text-xl font-bold text-orange-400 mb-4">طلبات الانضمام المعلقة (<span id="pending-count">0</span>)</h3>
                 <div id="pending-requests-container" class="space-y-3"></div>
             </div>
 
             <div class="bg-fire-card border border-white/10 rounded-3xl p-6 overflow-hidden">
-                <h3 class="text-xl font-bold text-amber-400 mb-4">التحكم في الأعضاء والنقاط والرتب والأوسمة</h3>
+                <h3 class="text-xl font-bold text-amber-400 mb-4">التحكم في الأعضاء، المستويات، الأسلحة، المهارات، والرتب</h3>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-right border-collapse min-w-[750px]">
+                    <table class="w-full text-right border-collapse min-w-[950px]">
                         <thead>
                             <tr class="border-b border-white/10 text-gray-400 text-xs uppercase bg-black/40">
                                 <th class="p-3">اللاعب (ID)</th>
+                                <th class="p-3">المستوى</th>
+                                <th class="p-3">السلاح المميز</th>
+                                <th class="p-3">المهارة</th>
                                 <th class="p-3">النقاط ⭐️</th>
                                 <th class="p-3">الصلاحية</th>
                                 <th class="p-3">الرتبة</th>
@@ -376,30 +384,49 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div id="admin-logo-box" class="bg-fire-card border border-amber-500/30 rounded-3xl p-6 space-y-3">
-                    <h3 class="text-lg font-bold text-orange-400">تغيير وحفظ شعار العصابة</h3>
-                    <label for="logo-upload-input" class="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-xs font-bold text-center cursor-pointer block transition">
-                        <i class="fa-solid fa-image ml-1 text-orange-400"></i> اختر صورة الشعار من جهازك
-                    </label>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div id="admin-logo-box" class="bg-fire-card border border-amber-500/30 rounded-3xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-orange-400">تغيير شعار العصابة</h3>
+                    <label for="logo-upload-input" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-orange-600 to-red-600 text-white text-xs font-bold text-center cursor-pointer block">اختر صورة الشعار</label>
                     <input type="file" id="logo-upload-input" accept="image/*" onchange="handleLogoUpload(event)" class="hidden">
-                    <input type="text" id="logo-url-input" placeholder="أو ضع رابط الصورة المباشر هنا..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:border-orange-500 focus:outline-none">
-                    <button onclick="saveGangLogo()" class="w-full fire-btn py-2.5 rounded-xl text-xs font-bold text-white">
-                        <i class="fa-solid fa-floppy-disk ml-1"></i> حفظ الشعار
-                    </button>
-                    <button onclick="resetLogoToDefault()" class="w-full py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-gray-400 font-semibold transition">استعادة الشعار الافتراضي</button>
+                    <div class="space-y-1 pt-1">
+                        <label class="text-[11px] text-gray-400 block">أو ضع رابط صورة مباشر:</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="logo-url-input" placeholder="https://..." class="w-full bg-black/60 border border-white/15 rounded-xl px-2.5 py-1.5 text-xs text-white">
+                            <button onclick="handleLogoUrlSave()" class="fire-btn px-3 py-1.5 rounded-xl text-xs font-bold text-white shrink-0">حفظ الشعار</button>
+                        </div>
+                    </div>
+                    <button onclick="resetLogoToDefault()" class="w-full py-2 rounded-xl bg-white/5 text-xs text-gray-300 font-semibold">استعادة الشعار الافتراضي</button>
+                </div>
+                <div class="bg-fire-card border border-white/10 rounded-3xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-orange-400">إدارة مهارات القتال</h3>
+                    <div class="space-y-2">
+                        <label class="text-xs text-gray-400 block">إضافة مهارة جديدة للتسجيل:</label>
+                        <input type="text" id="new-skill-name" placeholder="مثال: قناص ليلي / تفكيك قنابل..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
+                        <button onclick="addNewSkill()" class="w-full fire-btn py-2.5 rounded-xl text-sm font-bold text-white"><i class="fa-solid fa-plus ml-1"></i> حفظ المهارة</button>
+                    </div>
+                    <div id="admin-skills-list" class="flex flex-wrap gap-1.5 pt-2 border-t border-white/10"></div>
                 </div>
                 <div class="bg-fire-card border border-white/10 rounded-3xl p-6 space-y-4">
                     <h3 class="text-lg font-bold text-orange-400">إضافة قانون</h3>
                     <input type="text" id="new-rule-title" placeholder="عنوان القانون..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
                     <textarea id="new-rule-desc" rows="2" placeholder="التفاصيل..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></textarea>
-                    <button onclick="addNewRule()" class="w-full fire-btn py-2.5 rounded-xl text-sm font-bold text-white"><i class="fa-solid fa-floppy-disk ml-1"></i> حفظ ونشر القانون</button>
+                    <button onclick="addNewRule()" class="w-full fire-btn py-2.5 rounded-xl text-sm font-bold text-white"><i class="fa-solid fa-floppy-disk ml-1"></i> حفظ القانون</button>
                 </div>
                 <div class="bg-fire-card border border-white/10 rounded-3xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-orange-400">إعلان حرب</h3>
-                    <input type="text" id="new-war-title" placeholder="عنوان الإعلان..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
-                    <textarea id="new-war-desc" rows="2" placeholder="التفاصيل..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></textarea>
-                    <button onclick="addNewAnnouncement()" class="w-full gold-btn py-2.5 rounded-xl text-sm"><i class="fa-solid fa-floppy-disk ml-1"></i> حفظ وإرسال لغرفة الحروب</button>
+                    <h3 class="text-lg font-bold text-orange-400">إدارة غرفة الحروب</h3>
+                    <div class="space-y-2 border-b border-white/10 pb-3">
+                        <label class="text-xs text-gray-400 block">تعديل الحرب الكبرى والعد التنازلي:</label>
+                        <input type="text" id="edit-war-banner-title" placeholder="مثال: حرب السيطرة ضد..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-xs text-white">
+                        <input type="datetime-local" id="edit-war-target-date" class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-xs text-white">
+                        <button onclick="saveWarSettings()" class="w-full fire-btn py-2 rounded-xl text-xs font-bold text-white"><i class="fa-solid fa-clock ml-1"></i> حفظ موعد الحرب</button>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs text-gray-400 block">إضافة أمر حرب جديد:</label>
+                        <input type="text" id="new-war-title" placeholder="عنوان الإعلان..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
+                        <textarea id="new-war-desc" rows="2" placeholder="التفاصيل..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></textarea>
+                        <button onclick="addNewAnnouncement()" class="w-full gold-btn py-2.5 rounded-xl text-sm"><i class="fa-solid fa-floppy-disk ml-1"></i> حفظ وإرسال لغرفة الحروب</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -421,65 +448,77 @@
                 <div><label class="block text-xs font-bold text-gray-300 mb-1">كلمة المرور</label><input type="password" id="login-pass" required class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-3 text-sm text-white"></div>
                 <button type="submit" class="w-full fire-btn py-3 rounded-xl font-bold text-white">دخول</button>
             </form>
-            <form id="register-form" onsubmit="handleRegister(event)" class="hidden space-y-3.5">
+            <form id="register-form" onsubmit="handleRegister(event)" class="hidden space-y-3">
                 <div class="grid grid-cols-2 gap-3">
                     <div><label class="block text-xs font-bold text-gray-300 mb-1">ID اللاعب</label><input type="text" id="reg-id" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
-                    <div><label class="block text-xs font-bold text-gray-300 mb-1">العمر</label><input type="number" id="reg-age" min="12" max="99" placeholder="العمر..." required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                    <div><label class="block text-xs font-bold text-gray-300 mb-1">العمر</label><input type="number" id="reg-age" min="10" max="99" required placeholder="مثال: 22" class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div><label class="block text-xs font-bold text-gray-300 mb-1">اسم اللاعب</label><input type="text" id="reg-name" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                    <div><label class="block text-xs font-bold text-gray-300 mb-1">قيمة الشركة الإجمالية</label><input type="text" id="reg-company" required placeholder="مثال: 50,000,000$" class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-gray-300 mb-1">المستوى (1 - 100)</label>
-                        <select id="reg-level" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
-                            <!-- سيتم تعبئة المستويات من 1 إلى 100 تلقائياً -->
+                        <label class="block text-xs font-bold text-gray-300 mb-1">السلاح المميز</label>
+                        <select id="reg-weapon" class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
+                            <option value="رشاش">رشاش (Machine Gun)</option>
+                            <option value="قناصة">قناصة (Sniper Rifle)</option>
+                            <option value="آر بي جي">آر بي جي (RPG)</option>
+                            <option value="بندقية هجومية">بندقية هجومية (Assault Rifle)</option>
+                            <option value="شوت جن">شوت جن (Shotgun)</option>
                         </select>
                     </div>
-                    <div><label class="block text-xs font-bold text-gray-300 mb-1">قيمة الشركة الإجمالية</label><input type="text" id="reg-company-value" placeholder="مثال: 5,000,000" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">المهارة القتالية</label>
+                        <select id="reg-skill" class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></select>
+                    </div>
                 </div>
-                <div><label class="block text-xs font-bold text-gray-300 mb-1">اسم اللاعب</label><input type="text" id="reg-name" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
                 <div><label class="block text-xs font-bold text-gray-300 mb-1">كلمة المرور</label><input type="password" id="reg-pass" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
                 <button type="submit" class="w-full gold-btn py-3 rounded-xl">إرسال طلب الانضمام</button>
             </form>
         </div>
     </div>
 
-    <!-- ملف العضو -->
+    <!-- نافذة تفاصيل العضو والأوسمة -->
     <div id="member-profile-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
         <div id="member-profile-content" class="bg-fire-card border border-orange-500/40 rounded-3xl max-w-md w-full p-6 relative shadow-2xl fire-glow"></div>
     </div>
 
     <script>
         const STORAGE_KEYS = {
-            USERS: 'king_fire_users_v7',
-            PENDING: 'king_fire_pending_v7',
-            CHAT: 'king_fire_chat_v7',
-            RULES: 'king_fire_rules_v7',
-            WARS: 'king_fire_wars_v7',
-            LOGO: 'king_fire_logo_v7',
-            SESSION: 'king_fire_session_v7'
+            USERS: 'king_fire_users_v9',
+            PENDING: 'king_fire_pending_v9',
+            CHAT: 'king_fire_chat_v9',
+            RULES: 'king_fire_rules_v9',
+            WARS: 'king_fire_wars_v9',
+            WAR_CONFIG: 'king_fire_war_config_v9',
+            SKILLS: 'king_fire_skills_v9',
+            LOGO: 'king_fire_logo_v9',
+            SESSION: 'king_fire_session_v9'
         };
 
-        const DEFAULT_SVG_LOGO = `<svg viewBox="0 0 320 320" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="320" rx="28" fill="#140c0a"/><text x="160" y="160" fill="#ffb700" font-size="40" font-weight="900" text-anchor="middle">KING FIRE</text></svg>`;
+        const DEFAULT_LOGO_URL = 'https://i.ibb.co/YmvjdtdV/image.jpg';
 
         const GANG_RANKS = [
-            { id: 'king', name: 'الزعيم الأعلى (KING)', pointReq: 1000, color: 'text-amber-400', badgeBg: 'bg-amber-500/20 border-amber-500/50', icon: 'fa-crown', desc: 'القائد والزعيم المطلق.' },
-            { id: 'squad_leader', name: 'قائد مجموعة', pointReq: 700, color: 'text-yellow-400', badgeBg: 'bg-yellow-500/20 border-yellow-500/50', icon: 'fa-chess-king', desc: 'يقود مجموعة مقاتلين الميدان.' },
-            { id: 'general', name: 'مستشار الحرب', pointReq: 500, color: 'text-red-400', badgeBg: 'bg-red-500/20 border-red-500/50', icon: 'fa-chess-knight', desc: 'مخطط استراتيجيات الهجوم والدفاع.' },
-            { id: 'elite', name: 'نخبة النار', pointReq: 300, color: 'text-orange-400', badgeBg: 'bg-orange-500/15 border-orange-500/40', icon: 'fa-bolt', desc: 'مقاتل شرس في الخط الأمامي.' },
-            { id: 'warrior', name: 'مقاتل محترف', pointReq: 100, color: 'text-emerald-400', badgeBg: 'bg-emerald-500/15 border-emerald-500/40', icon: 'fa-khanda', desc: 'عضو نشط وموثوق.' },
-            { id: 'recruit', name: 'مجند جديد', pointReq: 0, color: 'text-gray-300', badgeBg: 'bg-white/10 border-white/20', icon: 'fa-shield', desc: 'عضو انضم حديثاً للعرين.' }
+            { id: 'king', name: 'الزعيم الأعلى (KING)', pointReq: 1000, color: 'text-amber-400', badgeBg: 'bg-amber-500/20 border-amber-500/50', icon: 'fa-crown', desc: 'القائد والزعيم.' },
+            { id: 'squad_leader', name: 'قائد مجموعة', pointReq: 700, color: 'text-yellow-400', badgeBg: 'bg-yellow-500/20 border-yellow-500/50', icon: 'fa-chess-king', desc: 'يقود مجموعة مقاتلين.' },
+            { id: 'general', name: 'مستشار الحرب', pointReq: 500, color: 'text-red-400', badgeBg: 'bg-red-500/20 border-red-500/50', icon: 'fa-chess-knight', desc: 'مخطط استراتيجي.' },
+            { id: 'elite', name: 'نخبة النار', pointReq: 300, color: 'text-orange-400', badgeBg: 'bg-orange-500/15 border-orange-500/40', icon: 'fa-bolt', desc: 'مقاتل في الخط الأمامي.' },
+            { id: 'warrior', name: 'مقاتل محترف', pointReq: 100, color: 'text-emerald-400', badgeBg: 'bg-emerald-500/15 border-emerald-500/40', icon: 'fa-khanda', desc: 'عضو نشط.' },
+            { id: 'recruit', name: 'مجند جديد', pointReq: 0, color: 'text-gray-300', badgeBg: 'bg-white/10 border-white/20', icon: 'fa-shield', desc: 'عضو جديد.' }
         ];
 
         const GANG_MEDALS = [
-            { id: 'courage_medal', name: 'وسام الشجاعة الملكي', icon: 'fa-fire-flame-curved', color: 'text-orange-500', bg: 'from-orange-600/20 to-red-600/10', desc: 'وسام الشجاعة والبسالة.' },
-            { id: 'victory_medal', name: 'وسام النصر الملكي', icon: 'fa-crown', color: 'text-amber-400', bg: 'from-amber-500/20 to-yellow-600/10', desc: 'حامل لواء النصر.' },
-            { id: 'flame_guard', name: 'شارة حارس الشعلة', icon: 'fa-fire', color: 'text-red-500', bg: 'from-red-500/20 to-orange-500/10', desc: 'حارس شعلة KING FIRE.' },
-            { id: 'distinguished_service', name: 'وسام الخدمة المتميزة', icon: 'fa-medal', color: 'text-yellow-400', bg: 'from-yellow-500/20 to-amber-600/10', desc: 'خدمة جليلة للعصابة.' },
-            { id: 'achievement_medal', name: 'ميدالية الإنجاز', icon: 'fa-award', color: 'text-emerald-400', bg: 'from-emerald-500/20 to-teal-600/10', desc: 'إنجازات قياسية.' },
-            { id: 'leadership_medal', name: 'وسام القيادة', icon: 'fa-chess-queen', color: 'text-purple-400', bg: 'from-purple-500/20 to-pink-600/10', desc: 'كفاءة قيادية عالية.' },
-            { id: 'loyalty_badge', name: 'شارة الوفاء', icon: 'fa-shield-halved', color: 'text-amber-500', bg: 'from-amber-600/20 to-orange-600/10', desc: 'الولاء المطلق للعرين.' },
-            { id: 'training_badge', name: 'نوط التدريب', icon: 'fa-dumbbell', color: 'text-blue-400', bg: 'from-blue-500/20 to-indigo-600/10', desc: 'جاهزية قتالية عالية.' },
-            { id: 'kingdom_defense', name: 'وسام الدفاع عن المملكة', icon: 'fa-shield-virus', color: 'text-red-400', bg: 'from-red-600/20 to-stone-800/10', desc: 'حماية حدود العصابة.' },
-            { id: 'innovation_medal', name: 'ميدالية الابتكار', icon: 'fa-lightbulb', color: 'text-amber-300', bg: 'from-amber-400/20 to-yellow-500/10', desc: 'أفكار استراتيجية مبتكرة.' }
+            { id: 'bravery', name: 'وسام الشجاعة الملكي', icon: 'fa-shield-halved', color: 'text-amber-400', desc: 'للبسالة في قلب المعركة' },
+            { id: 'victory', name: 'وسام النصر الملكي', icon: 'fa-crown', color: 'text-yellow-400', desc: 'حسم المعارك الكبرى' },
+            { id: 'flame_guardian', name: 'شارة حارس الشعلة', icon: 'fa-fire-flame-curved', color: 'text-orange-500', desc: 'الحفاظ على شعلة العصابة' },
+            { id: 'distinguished_service', name: 'وسام الخدمة المتميزة', icon: 'fa-award', color: 'text-red-400', desc: 'الخدمة والانضباط المستمر' },
+            { id: 'achievement', name: 'ميدالية الإنجاز', icon: 'fa-medal', color: 'text-amber-300', desc: 'تحقيق أهداف استثنائية' },
+            { id: 'leadership', name: 'وسام القيادة', icon: 'fa-chess-king', color: 'text-yellow-300', desc: 'مهارات قيادة فرقة مقاتلة' },
+            { id: 'loyalty_badge', name: 'شارة الوفاء', icon: 'fa-handshake-angle', color: 'text-orange-400', desc: 'الولاء المطلق للزعيم والعصابة' },
+            { id: 'training', name: 'نوط التدريب', icon: 'fa-person-rifle', color: 'text-emerald-400', desc: 'التدريب المستمر ورفع الكفاءة' },
+            { id: 'defense', name: 'وسام الدفاع عن المملكة', icon: 'fa-chess-rook', color: 'text-red-500', desc: 'التصدي لهجمات الأعداء' },
+            { id: 'innovation', name: 'ميدالية الابتكار', icon: 'fa-lightbulb', color: 'text-amber-400', desc: 'أفكار وتكتيكات إبداعية' }
         ];
 
         const DEFAULT_RULES = [
@@ -490,12 +529,20 @@
             { id: 5, title: 'السمعة والشرف', desc: 'حظر أي تصرف يسيء لاسم عصابة KING FIRE أمام العصابات الأخرى.' }
         ];
 
+        const WEAPON_OPTIONS = ['رشاش', 'قناصة', 'آر بي جي', 'بندقية هجومية', 'شوت جن'];
+        const DEFAULT_SKILLS = ['سائق محترف', 'اقتحام واشتباك قريب', 'خبير استطلاع وتجسس'];
+
         const DEFAULT_USERS = [
-            { id: '1001', name: 'BinAli', age: 30, level: 100, companyValue: '10,000,000', password: 'alaaali161991', role: 'leader', rankId: 'king', points: 1500, medals: ['courage_medal', 'victory_medal', 'leadership_medal'], joinedAt: '2026-01-01' },
-            { id: '1002', name: 'KF々DRAGON', age: 25, level: 85, companyValue: '7,500,000', password: 'mod', role: 'admin', rankId: 'squad_leader', points: 850, medals: ['flame_guard'], joinedAt: '2026-01-10' }
+            { id: '1001', name: 'BinAli', level: 100, age: 30, companyValue: '999,999,999$', weapon: 'آر بي جي', skill: 'اقتحام واشتباك قريب', password: 'alaaali161991', role: 'leader', rankId: 'king', points: 1500, medals: ['victory', 'loyalty_badge', 'bravery'], joinedAt: '2026-01-01' },
+            { id: '1002', name: 'KF々DRAGON', level: 84, age: 24, companyValue: '120,000,000$', weapon: 'قناصة', skill: 'خبير استطلاع وتجسس', password: 'mod', role: 'admin', rankId: 'squad_leader', points: 850, medals: ['distinguished_service'], joinedAt: '2026-01-10' }
         ];
 
-        let state = { currentUser: null, users: [], pending: [], chat: [], rules: [], wars: [], customLogo: null, tempLogo: null };
+        const DEFAULT_WARS = [
+            { id: 1, title: 'الاستعداد لمعركة السيطرة الأسبوعية', desc: 'التواجد في الروم الصوتي قبل الموعد بـ 15 دقيقة بكامل العتاد.', date: 'اليوم - 10:00 مساءً' }
+        ];
+
+        let state = { currentUser: null, users: [], pending: [], chat: [], rules: [], wars: [], skills: [], warConfig: { title: 'حرب السيطرة الكبرى ضد DARK WOLVES', targetDate: null }, customLogo: null };
+        let countdownInterval = null;
 
         window.openAuthModal = function(mode) {
             document.getElementById('auth-modal').classList.remove('hidden');
@@ -553,8 +600,6 @@
                 window.closeAuthModal();
                 updateAuthUI();
                 renderMembers();
-                renderRanks();
-                renderMedals();
                 renderAdminPanel();
                 window.showToast(`أهلاً بك يا بطل ${user.name}!`, 'success');
             } else {
@@ -566,16 +611,17 @@
             event.preventDefault();
             const id = document.getElementById('reg-id').value.trim();
             const name = document.getElementById('reg-name').value.trim();
-            const age = document.getElementById('reg-age').value.trim();
-            const level = parseInt(document.getElementById('reg-level').value);
-            const companyValue = document.getElementById('reg-company-value').value.trim();
+            const age = parseInt(document.getElementById('reg-age').value) || 18;
+            const companyValue = document.getElementById('reg-company').value.trim();
+            const weapon = document.getElementById('reg-weapon').value;
+            const skill = document.getElementById('reg-skill').value;
             const password = document.getElementById('reg-pass').value;
 
             if (state.users.some(u => u.id === id) || state.pending.some(p => p.id === id)) {
                 window.showToast('هذا الـ ID مسجل مسبقاً أو قيد المراجعة.', 'error');
                 return;
             }
-            state.pending.push({ id, name, age, level, companyValue, password });
+            state.pending.push({ id, name, level: 1, age, companyValue, weapon, skill, password });
             localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
             window.closeAuthModal();
             renderAdminPanel();
@@ -607,7 +653,7 @@
         window.approveRequest = function(id) {
             const req = state.pending.find(p => p.id === id);
             if (!req) return;
-            state.users.push({ ...req, role: 'member', rankId: 'recruit', points: 0, medals: [], joinedAt: '2026' });
+            state.users.push({ ...req, level: 1, role: 'member', rankId: 'recruit', points: 0, medals: [], joinedAt: '2026' });
             state.pending = state.pending.filter(p => p.id !== id);
             localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
             localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
@@ -625,9 +671,19 @@
             window.showToast('تم رفض الطلب.', 'info');
         };
 
+        window.updateUserLevel = function(id, levelVal) {
+            const u = state.users.find(x => x.id === id);
+            if (u) {
+                u.level = Math.min(100, Math.max(1, parseInt(levelVal) || 1));
+                localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
+                renderMembers();
+                window.showToast(`تم تحديث مستوى ${u.name} إلى ${u.level}`, 'success');
+            }
+        };
+
         window.updateUserRole = function(id, role) {
             const u = state.users.find(x => x.id === id);
-            if (u) { u.role = role; localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users)); renderMembers(); renderRanks(); renderAdminPanel(); window.showToast('تم تحديث الصلاحية', 'success'); }
+            if (u) { u.role = role; localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users)); renderMembers(); renderAdminPanel(); window.showToast('تم تحديث الصلاحية', 'success'); }
         };
 
         window.updateUserRank = function(id, rankId) {
@@ -659,15 +715,105 @@
         };
 
         window.addNewRule = function() {
-            const title = document.getElementById('new-rule-title').value.trim();
-            const desc = document.getElementById('new-rule-desc').value.trim();
-            if (!title || !desc) { window.showToast('املأ عنوان وتفاصيل القانون أولاً!', 'error'); return; }
+            const titleInput = document.getElementById('new-rule-title');
+            const descInput = document.getElementById('new-rule-desc');
+            const title = titleInput.value.trim();
+            const desc = descInput.value.trim();
+            if (!title || !desc) { window.showToast('الرجاء إدخال عنوان وتفاصيل القانون!', 'error'); return; }
             state.rules.push({ id: Date.now(), title, desc });
             localStorage.setItem(STORAGE_KEYS.RULES, JSON.stringify(state.rules));
-            document.getElementById('new-rule-title').value = '';
-            document.getElementById('new-rule-desc').value = '';
+            titleInput.value = ''; descInput.value = '';
             renderRules();
-            window.showToast('تم حفظ ونشر القانون بنجاح! 👑', 'success');
+            window.showToast('تمت إضافة القانون بنجاح!', 'success');
+        };
+
+        window.deleteRule = function(id) {
+            state.rules = state.rules.filter(r => r.id !== id);
+            localStorage.setItem(STORAGE_KEYS.RULES, JSON.stringify(state.rules));
+            renderRules();
+            window.showToast('تم حذف القانون.', 'info');
+        };
+
+        window.saveGangRulesChanges = function() {
+            localStorage.setItem(STORAGE_KEYS.RULES, JSON.stringify(state.rules));
+            renderRules();
+            window.showToast('تم حفظ قوانين العصابة بنجاح! 👑🔥', 'success');
+        };
+
+        window.addNewSkill = function() {
+            const input = document.getElementById('new-skill-name');
+            const val = input.value.trim();
+            if (!val) { window.showToast('اكتب اسم المهارة أولاً!', 'error'); return; }
+            if (state.skills.includes(val)) { window.showToast('هذه المهارة موجودة بالفعل!', 'error'); return; }
+            state.skills.push(val);
+            localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(state.skills));
+            input.value = '';
+            populateSkillDropdowns();
+            renderAdminPanel();
+            window.showToast(`تمت إضافة مهارة "${val}" بنجاح! 🔥`, 'success');
+        };
+
+        window.deleteSkill = function(skillName) {
+            state.skills = state.skills.filter(s => s !== skillName);
+            localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(state.skills));
+            populateSkillDropdowns();
+            renderAdminPanel();
+            window.showToast('تم حذف المهارة.', 'info');
+        };
+
+        function populateSkillDropdowns() {
+            const regSkill = document.getElementById('reg-skill');
+            if (regSkill) {
+                regSkill.innerHTML = state.skills.map(s => `<option value="${s}">${s}</option>`).join('');
+            }
+        }
+
+        window.addNewAnnouncement = function() {
+            const titleInput = document.getElementById('new-war-title');
+            const descInput = document.getElementById('new-war-desc');
+            const title = titleInput.value.trim();
+            const desc = descInput.value.trim();
+            if (!title || !desc) { window.showToast('الرجاء إدخال عنوان وتفاصيل الحرب!', 'error'); return; }
+            state.wars.unshift({ id: Date.now(), title, desc, date: 'قريباً في الميدان' });
+            localStorage.setItem(STORAGE_KEYS.WARS, JSON.stringify(state.wars));
+            titleInput.value = ''; descInput.value = '';
+            renderWars();
+            window.showToast('تم نشر أمر الحرب في غرفة الحروب بنجاح!', 'success');
+        };
+
+        window.deleteWarAnnouncement = function(id) {
+            state.wars = state.wars.filter(w => w.id !== id);
+            localStorage.setItem(STORAGE_KEYS.WARS, JSON.stringify(state.wars));
+            renderWars();
+            window.showToast('تم حذف أمر الحرب.', 'info');
+        };
+
+        window.saveWarSettings = function() {
+            const tInput = document.getElementById('edit-war-banner-title');
+            const dInput = document.getElementById('edit-war-target-date');
+            if (tInput && tInput.value.trim()) state.warConfig.title = tInput.value.trim();
+            if (dInput && dInput.value) state.warConfig.targetDate = new Date(dInput.value).getTime();
+            localStorage.setItem(STORAGE_KEYS.WAR_CONFIG, JSON.stringify(state.warConfig));
+            renderWars();
+            window.showToast('تم تحديث إعدادات الحرب الكبرى بنجاح!', 'success');
+        };
+
+        window.handleSendChatMessage = function(event) {
+            event.preventDefault();
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text || !state.currentUser) return;
+            state.chat.push({ id: Date.now(), sender: state.currentUser.name, role: state.currentUser.role, text, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
+            localStorage.setItem(STORAGE_KEYS.CHAT, JSON.stringify(state.chat));
+            input.value = '';
+            renderChat();
+        };
+
+        window.resetAllData = function() {
+            if (confirm('هل أنت متأكد من إعادة ضبط البيانات؟')) {
+                localStorage.clear();
+                location.reload();
+            }
         };
 
         window.showToast = function(msg, type = 'info') {
@@ -695,7 +841,7 @@
                 hc.innerHTML = `
                     <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-xl border border-orange-500/30">
                         <span class="text-white text-xs font-bold">${state.currentUser.name}</span>
-                        <span class="text-amber-400 text-[10px]">ID: ${state.currentUser.id}</span>
+                        <span class="text-amber-400 text-[10px]">LVL ${state.currentUser.level || 1}</span>
                     </div>
                     <button onclick="logout()" class="px-3 py-2 rounded-xl bg-red-600/20 text-red-300 text-xs font-bold"><i class="fa-solid fa-right-from-bracket"></i></button>
                 `;
@@ -716,42 +862,61 @@
 
         function renderRules() {
             const container = document.getElementById('rules-list-container');
-            if (!container) return;
-            container.innerHTML = state.rules.map((r, idx) => `
-                <div class="bg-black/50 border border-orange-500/20 rounded-2xl p-4 flex gap-3 items-start">
-                    <span class="w-8 h-8 rounded-xl bg-orange-500/20 text-orange-400 font-bold flex items-center justify-center shrink-0 text-sm">${idx + 1}</span>
-                    <div>
-                        <h4 class="font-bold text-white text-base mb-1">${r.title}</h4>
-                        <p class="text-xs text-gray-300 leading-relaxed">${r.desc}</p>
+            const adminContainer = document.getElementById('admin-rules-list');
+            if (container) {
+                container.innerHTML = state.rules.map((r, idx) => `
+                    <div class="bg-black/50 border border-orange-500/20 rounded-2xl p-4 flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-400 font-bold text-xs shrink-0">${idx + 1}</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm mb-1">${r.title}</h4>
+                            <p class="text-xs text-gray-300 leading-relaxed">${r.desc}</p>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `).join('');
+            }
+            if (adminContainer) {
+                adminContainer.innerHTML = state.rules.map((r, idx) => `
+                    <div class="bg-black/60 border border-white/10 rounded-xl p-3 flex justify-between items-center gap-3 text-xs">
+                        <div class="flex-grow space-y-1">
+                            <input type="text" value="${r.title}" onchange="state.rules[${idx}].title = this.value" class="w-full bg-black border border-white/15 rounded px-2 py-1 text-white font-bold">
+                            <input type="text" value="${r.desc}" onchange="state.rules[${idx}].desc = this.value" class="w-full bg-black border border-white/15 rounded px-2 py-1 text-gray-300">
+                        </div>
+                        <button onclick="deleteRule(${r.id})" class="text-red-400 p-2 hover:bg-red-500/10 rounded"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `).join('');
+            }
         }
 
         function renderMembers() {
             const container = document.getElementById('members-grid');
             if (!container) return;
-            container.innerHTML = state.users.map(u => {
-                const rankObj = GANG_RANKS.find(r => r.id === u.rankId) || GANG_RANKS[5];
-                const userMedals = (u.medals || []).map(mId => {
-                    const m = GANG_MEDALS.find(x => x.id === mId);
-                    return m ? `<span class="px-2 py-0.5 rounded-md bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[10px]"><i class="fa-solid ${m.icon} ml-1"></i>${m.name}</span>` : '';
-                }).join('');
+            const search = (document.getElementById('member-search')?.value || '').toLowerCase();
+            const roleFilter = document.getElementById('member-role-filter')?.value || 'all';
+            const filtered = state.users.filter(u => {
+                const matchSearch = u.name.toLowerCase().includes(search) || u.id.includes(search);
+                const matchRole = roleFilter === 'all' || u.role === roleFilter;
+                return matchSearch && matchRole;
+            });
 
+            container.innerHTML = filtered.map(u => {
+                const rankObj = GANG_RANKS.find(r => r.id === u.rankId) || GANG_RANKS[5];
                 return `
                     <div class="bg-fire-card border border-orange-500/20 rounded-3xl p-5 shadow-lg flex flex-col justify-between gap-3">
                         <div class="flex justify-between items-center">
-                            <div><h4 class="font-black text-white text-base">${u.name}</h4><span class="text-xs text-amber-400">ID: ${u.id} | العمر: ${u.age || 'غير محدد'}</span></div>
+                            <div><h4 class="font-black text-white text-base">${u.name}</h4><span class="text-xs text-amber-400">ID: ${u.id} • العمر: ${u.age || '-'}</span></div>
                             <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-gray-300 text-[10px] font-bold">${u.role}</span>
                         </div>
                         <div class="grid grid-cols-3 gap-2 text-xs bg-black/40 p-3 rounded-2xl text-center">
-                            <div>المستوى <strong>${u.level || 1}</strong></div>
-                            <div>النقاط ⭐️ <strong>${u.points || 0}</strong></div>
-                            <div>الشركة 💰 <strong>${u.companyValue || '0'}</strong></div>
+                            <div>المستوى <strong class="block text-amber-300">${u.level || 1}</strong></div>
+                            <div>الشركة <strong class="block text-green-400 text-[11px] truncate">${u.companyValue || '-'}</strong></div>
+                            <div>النقاط ⭐️ <strong class="block text-orange-400">${u.points || 0}</strong></div>
                         </div>
-                        ${userMedals ? `<div class="flex flex-wrap gap-1.5 pt-1">${userMedals}</div>` : '<div class="text-[11px] text-gray-500 italic">لا توجد أوسمة معلقة حالياً</div>'}
+                        <div class="grid grid-cols-2 gap-2 text-[11px] bg-black/30 p-2.5 rounded-xl border border-white/5">
+                            <div class="text-gray-300"><i class="fa-solid fa-gun text-red-400 ml-1"></i> السلاح: <strong class="text-white">${u.weapon || 'رشاش'}</strong></div>
+                            <div class="text-gray-300"><i class="fa-solid fa-bolt text-amber-400 ml-1"></i> المهارة: <strong class="text-white">${u.skill || '-'}</strong></div>
+                        </div>
                         <div class="flex justify-between items-center pt-2 border-t border-white/5 text-xs text-amber-300">
-                            <i class="fa-solid ${rankObj.icon}"></i> ${rankObj.name}
+                            <span><i class="fa-solid ${rankObj.icon} ml-1"></i> ${rankObj.name}</span>
                         </div>
                     </div>
                 `;
@@ -762,31 +927,32 @@
             const container = document.getElementById('ranks-container');
             if (!container) return;
             container.innerHTML = GANG_RANKS.map(rank => {
-                const rankMembers = state.users.filter(u => u.rankId === rank.id);
+                const membersInRank = state.users.filter(u => u.rankId === rank.id);
                 return `
-                    <div class="bg-fire-card border border-orange-500/25 rounded-3xl p-6 shadow-xl space-y-4">
+                    <div class="bg-fire-card border border-orange-500/20 rounded-3xl p-6 space-y-4 shadow-lg">
                         <div class="flex items-center justify-between border-b border-white/10 pb-3">
                             <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-2xl ${rank.badgeBg} flex items-center justify-center ${rank.color} text-xl">
+                                <div class="w-10 h-10 rounded-2xl ${rank.badgeBg} border flex items-center justify-center ${rank.color} text-lg">
                                     <i class="fa-solid ${rank.icon}"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-black ${rank.color}">${rank.name}</h3>
-                                    <p class="text-xs text-gray-400">${rank.desc} (يتطلب ${rank.pointReq}+ نقطة)</p>
+                                    <h3 class="font-black text-white text-lg ${rank.color}">${rank.name}</h3>
+                                    <p class="text-xs text-gray-400">${rank.desc} • يتطلب ${rank.pointReq} نقطة</p>
                                 </div>
                             </div>
-                            <span class="px-3 py-1 rounded-xl bg-black/50 text-amber-300 text-xs font-bold border border-white/10">
-                                الأعضاء: ${rankMembers.length}
-                            </span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 text-xs font-bold text-amber-300">${membersInRank.length} مقاتل</span>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                            ${rankMembers.length === 0 ? '<p class="text-xs text-gray-500 italic col-span-full py-2">لا يوجد أعضاء في هذه الرتبة حالياً.</p>' : rankMembers.map(m => `
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                            ${membersInRank.length === 0 ? '<p class="text-xs text-gray-500 col-span-full py-2">لا يوجد أعضاء في هذه الرتبة حالياً.</p>' : membersInRank.map(m => `
                                 <div class="bg-black/60 border border-white/10 rounded-2xl p-3.5 flex items-center justify-between">
-                                    <div>
-                                        <div class="font-bold text-white text-sm">${m.name}</div>
-                                        <div class="text-[11px] text-amber-400">ID: ${m.id}</div>
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-amber-400 font-bold text-xs"><i class="fa-solid fa-user-shield"></i></div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm">${m.name}</h4>
+                                            <span class="text-[11px] text-gray-400">ID: ${m.id} • لفل ${m.level || 1}</span>
+                                        </div>
                                     </div>
-                                    <span class="px-2 py-1 rounded-lg bg-orange-500/15 text-orange-300 text-xs font-bold">⭐️ ${m.points || 0}</span>
+                                    <span class="text-xs font-bold text-amber-400">${m.points || 0} ⭐️</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -801,25 +967,22 @@
             container.innerHTML = GANG_MEDALS.map(medal => {
                 const holders = state.users.filter(u => u.medals && u.medals.includes(medal.id));
                 return `
-                    <div class="bg-gradient-to-br ${medal.bg} border border-orange-500/30 rounded-3xl p-6 shadow-xl flex flex-col justify-between gap-4">
+                    <div class="bg-fire-card border border-orange-500/25 rounded-3xl p-6 shadow-xl flex flex-col justify-between gap-4">
                         <div class="flex items-start gap-4">
-                            <div class="w-16 h-16 rounded-2xl bg-black/80 border-2 border-orange-500/60 flex items-center justify-center ${medal.color} text-3xl shadow-lg shrink-0">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/10 border border-amber-500/40 flex items-center justify-center text-3xl ${medal.color} shrink-0 shadow-lg shadow-orange-600/20">
                                 <i class="fa-solid ${medal.icon}"></i>
                             </div>
                             <div class="space-y-1">
-                                <h3 class="text-lg font-black text-white">${medal.name}</h3>
+                                <h3 class="font-black text-white text-lg">${medal.name}</h3>
                                 <p class="text-xs text-gray-300 leading-relaxed">${medal.desc}</p>
                             </div>
                         </div>
-                        <div class="bg-black/60 border border-white/10 rounded-2xl p-3.5 space-y-2">
-                            <div class="text-xs font-bold text-amber-400 flex items-center justify-between">
-                                <span>أبطال الوسام:</span>
-                                <span class="px-2 py-0.5 rounded bg-amber-500/20 text-[10px]">${holders.length} مقاتل</span>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5 pt-1">
-                                ${holders.length === 0 ? '<span class="text-[11px] text-gray-500 italic">لم يحصل عليه أحد بعد</span>' : holders.map(h => `
-                                    <span class="px-2.5 py-1 rounded-xl bg-orange-600/20 border border-orange-500/40 text-white text-xs font-bold flex items-center gap-1.5">
-                                        <i class="fa-solid fa-fire text-orange-400 text-[10px]"></i> ${h.name}
+                        <div class="pt-3 border-t border-white/10">
+                            <span class="text-[11px] text-orange-400 font-bold block mb-2">الأعضاء الحاصلون على الوسام (${holders.length}):</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${holders.length === 0 ? '<span class="text-xs text-gray-500">لا يوجد حاصلون على هذا الوسام بعد.</span>' : holders.map(h => `
+                                    <span class="px-2.5 py-1 rounded-xl bg-black/70 border border-white/10 text-xs text-amber-300 font-bold flex items-center gap-1.5">
+                                        <i class="fa-solid fa-shield text-[10px] text-orange-500"></i> ${h.name}
                                     </span>
                                 `).join('')}
                             </div>
@@ -829,14 +992,75 @@
             }).join('');
         }
 
+        function renderWars() {
+            const titleEl = document.getElementById('war-banner-title');
+            if (titleEl && state.warConfig.title) titleEl.textContent = state.warConfig.title;
+
+            const annList = document.getElementById('announcements-list');
+            if (annList) {
+                const isAdmin = state.currentUser && (state.currentUser.role === 'leader' || state.currentUser.role === 'admin');
+                annList.innerHTML = state.wars.length === 0 ? '<p class="text-xs text-gray-400">لا توجد أوامر حرب مسجلة حالياً.</p>' : state.wars.map(w => `
+                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-4 flex justify-between items-start gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-0.5 rounded bg-red-600/30 text-red-300 text-[10px] font-bold">أمر قيادي</span>
+                                <span class="text-[11px] text-gray-400">${w.date || ''}</span>
+                            </div>
+                            <h4 class="font-bold text-white text-base">${w.title}</h4>
+                            <p class="text-xs text-gray-300 leading-relaxed">${w.desc}</p>
+                        </div>
+                        ${isAdmin ? `<button onclick="deleteWarAnnouncement(${w.id})" class="text-red-400 hover:text-red-300 p-1 text-xs" title="حذف"><i class="fa-solid fa-trash"></i></button>` : ''}
+                    </div>
+                `).join('');
+            }
+        }
+
+        function startWarCountdown() {
+            if (countdownInterval) clearInterval(countdownInterval);
+            countdownInterval = setInterval(() => {
+                const target = state.warConfig.targetDate || (new Date().getTime() + 3 * 24 * 60 * 60 * 1000);
+                const diff = target - new Date().getTime();
+                if (diff <= 0) return;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+                const dEl = document.getElementById('cd-days');
+                const hEl = document.getElementById('cd-hours');
+                const mEl = document.getElementById('cd-mins');
+                const sEl = document.getElementById('cd-secs');
+                if (dEl) dEl.textContent = String(days).padStart(2, '0');
+                if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+                if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+                if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+            }, 1000);
+        }
+
+        function renderChat() {
+            const container = document.getElementById('chat-messages-container');
+            if (!container) return;
+            container.innerHTML = state.chat.length === 0 ? '<p class="text-xs text-gray-400 text-center py-10">لا توجد رسائل في الشات بعد. كن أول من يتحدث!</p>' : state.chat.map(m => `
+                <div class="bg-black/60 border border-white/10 rounded-2xl p-3.5 space-y-1">
+                    <div class="flex justify-between items-center text-[11px]">
+                        <span class="font-bold text-amber-400">${m.sender} <span class="px-1.5 py-0.5 rounded bg-white/10 text-gray-300">${m.role}</span></span>
+                        <span class="text-gray-500">${m.time}</span>
+                    </div>
+                    <p class="text-xs text-gray-200 leading-relaxed">${m.text}</p>
+                </div>
+            `).join('');
+            container.scrollTop = container.scrollHeight;
+        }
+
         function renderAdminPanel() {
             const pendingContainer = document.getElementById('pending-requests-container');
             const pendingCount = document.getElementById('pending-count');
             if (pendingCount) pendingCount.textContent = state.pending.length;
             if (pendingContainer) {
                 pendingContainer.innerHTML = state.pending.length === 0 ? '<p class="text-xs text-gray-400">لا توجد طلبات معلقة.</p>' : state.pending.map(p => `
-                    <div class="flex justify-between items-center p-3 rounded-2xl bg-black/60 border border-orange-500/30 text-xs">
-                        <div><strong>${p.name}</strong> (ID: ${p.id}) - مستوى ${p.level || 1} - العمر: ${p.age} - الشركة: ${p.companyValue}</div>
+                    <div class="flex flex-wrap justify-between items-center gap-2 p-3 rounded-2xl bg-black/60 border border-orange-500/30 text-xs">
+                        <div>
+                            <strong>${p.name}</strong> (ID: ${p.id}) • العمر: ${p.age || '-'} • السلاح: <span class="text-red-300">${p.weapon || '-'}</span> • المهارة: <span class="text-amber-300">${p.skill || '-'}</span> • الشركة: ${p.companyValue || '-'}
+                        </div>
                         <div class="flex gap-2">
                             <button onclick="approveRequest('${p.id}')" class="px-3 py-1 rounded bg-green-600 text-white font-bold">موافقة</button>
                             <button onclick="rejectRequest('${p.id}')" class="px-3 py-1 rounded bg-red-600/30 text-red-300 font-bold">رفض</button>
@@ -845,46 +1069,76 @@
                 `).join('');
             }
 
+            const skillsListEl = document.getElementById('admin-skills-list');
+            if (skillsListEl) {
+                skillsListEl.innerHTML = state.skills.map(s => `
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/60 border border-orange-500/30 text-xs text-amber-200">
+                        ${s}
+                        <button onclick="deleteSkill('${s}')" class="text-red-400 hover:text-red-300"><i class="fa-solid fa-xmark"></i></button>
+                    </span>
+                `).join('');
+            }
+
             const tableBody = document.getElementById('admin-members-table');
             if (tableBody) {
-                tableBody.innerHTML = state.users.map(u => `
+                tableBody.innerHTML = state.users.map(u => {
+                    let userLevelOpts = '';
+                    for (let i = 1; i <= 100; i++) userLevelOpts += `<option value="${i}" ${(u.level || 1) === i ? 'selected' : ''}>مستوى ${i}</option>`;
+
+                    return `
                     <tr class="hover:bg-white/5">
                         <td class="p-3">${u.name} (ID: ${u.id})</td>
+                        <td class="p-3">
+                            <select onchange="updateUserLevel('${u.id}', this.value)" class="bg-black border border-white/15 text-xs text-amber-300 p-1 rounded">
+                                ${userLevelOpts}
+                            </select>
+                        </td>
+                        <td class="p-3">
+                            <select onchange="updateUserWeapon('${u.id}', this.value)" class="bg-black border border-white/15 text-xs text-white p-1 rounded">
+                                ${WEAPON_OPTIONS.map(w => `<option value="${w}" ${u.weapon === w ? 'selected' : ''}>${w}</option>`).join('')}
+                            </select>
+                        </td>
+                        <td class="p-3">
+                            <select onchange="updateUserSkill('${u.id}', this.value)" class="bg-black border border-white/15 text-xs text-white p-1 rounded">
+                                ${state.skills.map(s => `<option value="${s}" ${u.skill === s ? 'selected' : ''}>${s}</option>`).join('')}
+                            </select>
+                        </td>
                         <td class="p-3 font-bold text-amber-300">${u.points || 0} ⭐️ <button onclick="adjustUserPoints('${u.id}', 50)" class="text-green-400 px-1">+</button><button onclick="adjustUserPoints('${u.id}', -50)" class="text-red-400 px-1">-</button></td>
                         <td class="p-3"><select onchange="updateUserRole('${u.id}', this.value)" class="bg-black text-xs text-white p-1 rounded"><option value="leader" ${u.role==='leader'?'selected':''}>قائد</option><option value="admin" ${u.role==='admin'?'selected':''}>مشرف</option><option value="member" ${u.role==='member'?'selected':''}>عضو</option></select></td>
                         <td class="p-3"><select onchange="updateUserRank('${u.id}', this.value)" class="bg-black text-xs text-white p-1 rounded">${GANG_RANKS.map(r=>`<option value="${r.id}" ${u.rankId===r.id?'selected':''}>${r.name}</option>`).join('')}</select></td>
-                        <td class="p-3"><div class="flex gap-1 flex-wrap">${GANG_MEDALS.map(m=>`<button onclick="toggleUserMedal('${u.id}','${m.id}')" class="text-[9px] px-1.5 py-0.5 rounded ${u.medals&&u.medals.includes(m.id)?'bg-amber-500 text-black':'bg-black text-gray-400'}">${m.name.replace('وسام ','').replace('شارة ','')}</button>`).join('')}</div></td>
+                        <td class="p-3"><div class="flex gap-1 flex-wrap">${GANG_MEDALS.map(m=>`<button onclick="toggleUserMedal('${u.id}','${m.id}')" class="text-[9px] px-1.5 py-0.5 rounded ${u.medals&&u.medals.includes(m.id)?'bg-amber-500 text-black':'bg-black text-gray-400'}">${m.name.replace('وسام ','').replace('ميدالية ','').replace('شارة ','')}</button>`).join('')}</div></td>
                         <td class="p-3 text-center">${u.id!=='1001'?`<button onclick="deleteUser('${u.id}')" class="text-red-400"><i class="fa-solid fa-trash"></i></button>`:'محمي'}</td>
                     </tr>
-                `).join('');
+                `}).join('');
             }
         }
 
         window.onload = function() {
-            // تعبئة قائمة المستويات من 1 إلى 100 بشكل مضمون
-            const levelSelect = document.getElementById('reg-level');
-            if (levelSelect) {
-                let optionsHtml = '';
-                for (let i = 1; i <= 100; i++) {
-                    optionsHtml += `<option value="${i}">مستوى ${i}</option>`;
-                }
-                levelSelect.innerHTML = optionsHtml;
-            }
-
             state.users = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS)) || DEFAULT_USERS;
             state.pending = JSON.parse(localStorage.getItem(STORAGE_KEYS.PENDING)) || [];
             state.rules = JSON.parse(localStorage.getItem(STORAGE_KEYS.RULES)) || DEFAULT_RULES;
-            state.customLogo = localStorage.getItem(STORAGE_KEYS.LOGO) || null;
+            state.wars = JSON.parse(localStorage.getItem(STORAGE_KEYS.WARS)) || DEFAULT_WARS;
+            state.skills = JSON.parse(localStorage.getItem(STORAGE_KEYS.SKILLS)) || DEFAULT_SKILLS;
+            state.warConfig = JSON.parse(localStorage.getItem(STORAGE_KEYS.WAR_CONFIG)) || state.warConfig;
+            state.chat = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHAT)) || [];
+            state.customLogo = localStorage.getItem(STORAGE_KEYS.LOGO) || DEFAULT_LOGO_URL;
             const savedSession = localStorage.getItem(STORAGE_KEYS.SESSION);
             if (savedSession) state.currentUser = state.users.find(u => u.id === savedSession);
             
+            const editWarTitleInput = document.getElementById('edit-war-banner-title');
+            if (editWarTitleInput) editWarTitleInput.value = state.warConfig.title;
+
+            populateSkillDropdowns();
             updateLogoDisplay();
             updateAuthUI();
             renderRules();
             renderMembers();
             renderRanks();
             renderMedals();
+            renderWars();
+            startWarCountdown();
             renderAdminPanel();
+            renderChat();
         };
 
         window.handleLogoUpload = function(event) {
@@ -892,43 +1146,35 @@
             if (!file) return;
             const reader = new FileReader();
             reader.onload = function(e) {
-                state.tempLogo = e.target.result;
-                updateLogoDisplay(state.tempLogo);
-                window.showToast('تم تجهيز الصورة! اضغط على "حفظ الشعار" لتأكيد الحفظ.', 'info');
+                state.customLogo = e.target.result;
+                localStorage.setItem(STORAGE_KEYS.LOGO, state.customLogo);
+                updateLogoDisplay();
+                window.showToast('تم تغيير شعار العصابة بنجاح!', 'success');
             };
             reader.readAsDataURL(file);
         };
 
-        window.saveGangLogo = function() {
-            const urlInput = document.getElementById('logo-url-input').value.trim();
-            if (urlInput) {
-                state.customLogo = urlInput;
-            } else if (state.tempLogo) {
-                state.customLogo = state.tempLogo;
-            } else if (!state.customLogo) {
-                window.showToast('اختر صورة من جهازك أو ضع رابطاً مباشراً أولاً!', 'error');
-                return;
-            }
+        window.handleLogoUrlSave = function() {
+            const urlInput = document.getElementById('logo-url-input');
+            const val = urlInput.value.trim();
+            if (!val) { window.showToast('أدخل رابط الصورة أولاً!', 'error'); return; }
+            state.customLogo = val;
             localStorage.setItem(STORAGE_KEYS.LOGO, state.customLogo);
-            state.tempLogo = null;
             updateLogoDisplay();
-            window.showToast('تم حفظ شعار العصابة بنجاح في جميع الأقسام! 👑🔥', 'success');
+            urlInput.value = '';
+            window.showToast('تم حفظ شعار العصابة برابط مباشر بنجاح! 👑', 'success');
         };
 
         window.resetLogoToDefault = function() {
-            state.customLogo = null;
-            state.tempLogo = null;
-            document.getElementById('logo-url-input').value = '';
-            localStorage.removeItem(STORAGE_KEYS.LOGO);
+            state.customLogo = DEFAULT_LOGO_URL;
+            localStorage.setItem(STORAGE_KEYS.LOGO, DEFAULT_LOGO_URL);
             updateLogoDisplay();
             window.showToast('تمت استعادة الشعار الافتراضي.', 'info');
         };
 
-        function updateLogoDisplay(previewSrc = null) {
-            const srcToUse = previewSrc || state.customLogo;
-            const logoHtml = srcToUse 
-                ? `<img src="${srcToUse}" class="w-full h-full object-cover rounded-xl" alt="Gang Logo" onerror="this.outerHTML=DEFAULT_SVG_LOGO">` 
-                : DEFAULT_SVG_LOGO;
+        function updateLogoDisplay() {
+            const logoSrc = state.customLogo || DEFAULT_LOGO_URL;
+            const logoHtml = `<img src="${logoSrc}" class="w-full h-full object-cover rounded-xl" alt="Gang Logo" onerror="this.src='https://placehold.co/150x150/140c0a/ffb700?text=KING+FIRE'">`;
             
             ['nav-logo-wrapper', 'hero-logo-container', 'modal-logo-wrapper'].forEach(id => {
                 const el = document.getElementById(id);
