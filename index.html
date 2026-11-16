@@ -377,11 +377,17 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div id="admin-logo-box" class="bg-fire-card border border-amber-500/30 rounded-3xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-orange-400">تغيير شعار العصابة</h3>
-                    <label for="logo-upload-input" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-orange-600 to-red-600 text-white text-xs font-bold text-center cursor-pointer block">اختر صورة الشعار</label>
+                <div id="admin-logo-box" class="bg-fire-card border border-amber-500/30 rounded-3xl p-6 space-y-3">
+                    <h3 class="text-lg font-bold text-orange-400">تغيير وحفظ شعار العصابة</h3>
+                    <label for="logo-upload-input" class="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-xs font-bold text-center cursor-pointer block transition">
+                        <i class="fa-solid fa-image ml-1 text-orange-400"></i> اختر صورة الشعار من جهازك
+                    </label>
                     <input type="file" id="logo-upload-input" accept="image/*" onchange="handleLogoUpload(event)" class="hidden">
-                    <button onclick="resetLogoToDefault()" class="w-full py-2 rounded-xl bg-white/5 text-xs text-gray-300 font-semibold">استعادة الشعار الافتراضي</button>
+                    <input type="text" id="logo-url-input" placeholder="أو ضع رابط الصورة المباشر هنا..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:border-orange-500 focus:outline-none">
+                    <button onclick="saveGangLogo()" class="w-full fire-btn py-2.5 rounded-xl text-xs font-bold text-white">
+                        <i class="fa-solid fa-floppy-disk ml-1"></i> حفظ الشعار
+                    </button>
+                    <button onclick="resetLogoToDefault()" class="w-full py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-gray-400 font-semibold transition">استعادة الشعار الافتراضي</button>
                 </div>
                 <div class="bg-fire-card border border-white/10 rounded-3xl p-6 space-y-4">
                     <h3 class="text-lg font-bold text-orange-400">إضافة قانون</h3>
@@ -489,7 +495,7 @@
             { id: '1002', name: 'KF々DRAGON', age: 25, level: 85, companyValue: '7,500,000', password: 'mod', role: 'admin', rankId: 'squad_leader', points: 850, medals: ['flame_guard'], joinedAt: '2026-01-10' }
         ];
 
-        let state = { currentUser: null, users: [], pending: [], chat: [], rules: [], wars: [], customLogo: null };
+        let state = { currentUser: null, users: [], pending: [], chat: [], rules: [], wars: [], customLogo: null, tempLogo: null };
 
         window.openAuthModal = function(mode) {
             document.getElementById('auth-modal').classList.remove('hidden');
@@ -886,24 +892,42 @@
             if (!file) return;
             const reader = new FileReader();
             reader.onload = function(e) {
-                state.customLogo = e.target.result;
-                localStorage.setItem(STORAGE_KEYS.LOGO, state.customLogo);
-                updateLogoDisplay();
-                window.showToast('تم تغيير شعار العصابة بنجاح!', 'success');
+                state.tempLogo = e.target.result;
+                updateLogoDisplay(state.tempLogo);
+                window.showToast('تم تجهيز الصورة! اضغط على "حفظ الشعار" لتأكيد الحفظ.', 'info');
             };
             reader.readAsDataURL(file);
         };
 
+        window.saveGangLogo = function() {
+            const urlInput = document.getElementById('logo-url-input').value.trim();
+            if (urlInput) {
+                state.customLogo = urlInput;
+            } else if (state.tempLogo) {
+                state.customLogo = state.tempLogo;
+            } else if (!state.customLogo) {
+                window.showToast('اختر صورة من جهازك أو ضع رابطاً مباشراً أولاً!', 'error');
+                return;
+            }
+            localStorage.setItem(STORAGE_KEYS.LOGO, state.customLogo);
+            state.tempLogo = null;
+            updateLogoDisplay();
+            window.showToast('تم حفظ شعار العصابة بنجاح في جميع الأقسام! 👑🔥', 'success');
+        };
+
         window.resetLogoToDefault = function() {
             state.customLogo = null;
+            state.tempLogo = null;
+            document.getElementById('logo-url-input').value = '';
             localStorage.removeItem(STORAGE_KEYS.LOGO);
             updateLogoDisplay();
             window.showToast('تمت استعادة الشعار الافتراضي.', 'info');
         };
 
-        function updateLogoDisplay() {
-            const logoHtml = state.customLogo 
-                ? `<img src="${state.customLogo}" class="w-full h-full object-cover rounded-xl" alt="Gang Logo">` 
+        function updateLogoDisplay(previewSrc = null) {
+            const srcToUse = previewSrc || state.customLogo;
+            const logoHtml = srcToUse 
+                ? `<img src="${srcToUse}" class="w-full h-full object-cover rounded-xl" alt="Gang Logo" onerror="this.outerHTML=DEFAULT_SVG_LOGO">` 
                 : DEFAULT_SVG_LOGO;
             
             ['nav-logo-wrapper', 'hero-logo-container', 'modal-logo-wrapper'].forEach(id => {
