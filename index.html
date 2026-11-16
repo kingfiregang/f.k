@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عصابة KING FIRE | الموقع الرسمي</title>
+    <!-- استدعاء خطوط عربية مناسبة للألعاب -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        fire: {
+                            black: '#0a0a0c',
+                            dark: '#141418',
+                            card: '#1c1c22',
+                            border: '#2e241f',
+                            orange: '#ff5500',
+                            gold: '#ffb700',
+                            red: '#d92600',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #f3f4f6;
+            font-family: 'Cairo', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(255, 85, 0, 0.14) 0%, transparent 55%),
+                radial-gradient(circle at 15% 85%, rgba(217, 38, 0, 0.08) 0%, transparent 45%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .fire-text-gradient {
+            background: linear-gradient(180deg, #fff3b0 0%, #ffb700 45%, #ff5500 85%, #d92600 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 10px rgba(255, 85, 0, 0.45));
+        }
+
+        .fire-glow {
+            box-shadow: 0 0 25px rgba(255, 85, 0, 0.25), inset 0 0 15px rgba(255, 183, 0, 0.08);
+        }
+
+        .fire-btn {
+            background: linear-gradient(135deg, #ff5500 0%, #d92600 100%);
+            box-shadow: 0 4px 15px rgba(255, 85, 0, 0.4);
+            transition: all 0.25s ease;
+        }
+        .fire-btn:hover {
+            background: linear-gradient(135deg, #ff7700 0%, #ff3300 100%);
+            box-shadow: 0 6px 22px rgba(255, 119, 0, 0.65);
+            transform: translateY(-2px);
+        }
+
+        .gold-btn {
+            background: linear-gradient(135deg, #ffb700 0%, #e07a00 100%);
+            color: #0a0a0c;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(255, 183, 0, 0.35);
+            transition: all 0.25s ease;
+        }
+        .gold-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 183, 0, 0.55);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff5500, #8a1c00);
+            border-radius: 4px;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.75; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.03); }
+        }
+        .emblem-pulse {
+            animation: pulseGlow 3.5s infinite ease-in-out;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, rgba(255, 85, 0, 0.22), rgba(217, 38, 0, 0.12));
+            border-color: #ff5500;
+            color: #ffb700;
+            box-shadow: 0 0 15px rgba(255, 85, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="flex flex-col">
+
+    <!-- نظام الإشعارات المخصص -->
+    <div id="toast-container" class="fixed top-5 left-5 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none"></div>
+
+    <!-- الشريط العلوي (Navbar) -->
+    <header class="sticky top-0 z-40 bg-fire-dark/90 backdrop-blur-md border-b border-orange-500/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                <div id="nav-logo-wrapper" class="w-12 h-12 rounded-xl overflow-hidden border-2 border-orange-500/70 bg-black flex items-center justify-center shadow-md shadow-orange-600/30">
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-black tracking-wide fire-text-gradient leading-none">KING FIRE</h1>
+                    <span class="text-xs text-orange-400/90 font-semibold">ملوك النار • القوة والولاء</span>
+                </div>
+            </div>
+
+            <div id="user-header-controls" class="flex items-center gap-2 sm:gap-3">
+                <button onclick="openAuthModal('login')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-xs sm:text-sm font-bold text-white transition">
+                    <i class="fa-solid fa-right-to-bracket ml-1 text-amber-400"></i> تسجيل الدخول
+                </button>
+                <button onclick="openAuthModal('register')" class="fire-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-white">
+                    <i class="fa-solid fa-user-plus ml-1"></i> تسجيل عضو
+                </button>
+            </div>
+        </div>
+
+        <nav class="bg-black/60 border-t border-white/5 px-4 py-2 overflow-x-auto">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 sm:gap-3 min-w-max">
+                <button onclick="switchTab('home')" id="tab-home" class="nav-tab active px-4 py-2 rounded-xl border border-transparent text-sm font-bold flex items-center gap-2 transition hover:bg-white/5">
+                    <i class="fa-solid fa-fire text-orange-500"></i>
+                    <span>الرئيسية والقوانين</span>
+                </button>
+
+                <button onclick="switchTab('members')" id="tab-members" class="nav-tab px-4 py-2 rounded-xl border border-transparent text-sm font-bold flex items-center gap-2 transition hover:bg-white/5">
+                    <i class="fa-solid fa-users text-amber-400"></i>
+                    <span>الأعضاء</span>
+                    <span id="lock-members" class="text-xs text-red-400"><i class="fa-solid fa-lock"></i></span>
+                </button>
+
+                <button onclick="switchTab('ranks')" id="tab-ranks" class="nav-tab px-4 py-2 rounded-xl border border-transparent text-sm font-bold flex items-center gap-2 transition hover:bg-white/5">
+                    <i class="fa-solid fa-crown text-yellow-400"></i>
+                    <span>الرتب</span>
+                    <span id="lock-ranks" class="text-xs text-red-400"><i class="fa-solid fa-lock"></i></span>
+                </button>
+
+                <button onclick="switchTab('medals')" id="tab-medals" class="nav-tab px-4 py-2 rounded-xl border border-transparent text-sm font-bold flex items-center gap-2 transition hover:bg-white/5">
+                    <i class="fa-solid fa-medal text-orange-400"></i>
+                    <span>الأوسمة</span>
+                    <span id="lock-medals" class="text-xs text-red-400"><i class="fa-solid fa-lock"></i></span>
+                </button>
+
+                <button onclick="switchTab('wars')" id="tab-wars" class="nav-tab px-4 py-2 rounded-xl border border-transparent text-sm font-bold flex items-center gap-2 transition hover:bg-white/5">
+                    <i class="fa-solid fa-skull-crossbones text-red-500"></i>
+                    <span>غرفة الحروب</span>
+                    <span id="lock-wars" class="text-xs text-red-400"><i class="fa-solid fa-lock"></i></span>
+                </button>
+
+                <button onclick="switchTab('chat')" id="tab-chat" class="nav-tab px-4 py-2 rounded-xl border border-transparent text-sm font-bold flex items-center gap-2 transition hover:bg-white/5">
+                    <i class="fa-solid fa-comments text-orange-400"></i>
+                    <span>شات العصابة</span>
+                    <span id="lock-chat" class="text-xs text-red-400"><i class="fa-solid fa-lock"></i></span>
+                </button>
+
+                <button onclick="switchTab('admin')" id="tab-admin" class="hidden nav-tab px-4 py-2 rounded-xl border border-amber-500/40 bg-amber-500/10 text-amber-300 text-sm font-bold flex items-center gap-2 transition hover:bg-amber-500/20">
+                    <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                    <span>لوحة الإدارة</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 sm:py-8">
+
+        <!-- الرئيسية -->
+        <section id="view-home" class="space-y-8">
+            <div class="relative rounded-3xl overflow-hidden border border-orange-500/30 bg-gradient-to-br from-fire-card via-[#151110] to-black p-6 sm:p-10 fire-glow">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-5 text-center lg:text-right">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/40 text-orange-300 text-xs sm:text-sm font-bold">
+                            <i class="fa-solid fa-fire-flame-curved text-orange-500"></i>
+                            <span>المقر الرسمي لعصابة KING FIRE</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-black leading-tight">
+                            أهلاً بك في عرين <span class="fire-text-gradient">KING FIRE</span>
+                        </h2>
+                        <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            هنا يجتمع أقوى المقاتلين تحت راية النار والتاج. سجل عضويتك الآن للوصول إلى قائمة الأعضاء، الرتب، الأوسمة، وغرفة الحروب.
+                        </p>
+
+                        <div id="hero-cta-area" class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                            <button onclick="openAuthModal('register')" class="fire-btn px-7 py-3.5 rounded-xl font-bold text-white text-base flex items-center gap-2">
+                                <i class="fa-solid fa-fire"></i> انضم للعصابة الآن (تسجيل)
+                            </button>
+                            <button onclick="openAuthModal('login')" class="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 font-bold text-amber-300 text-base">
+                                <i class="fa-solid fa-right-to-bracket ml-1"></i> تسجيل الدخول
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-3 pt-4 max-w-md mx-auto lg:mx-0">
+                            <div class="bg-black/50 border border-white/10 rounded-2xl p-3 text-center">
+                                <div id="stat-members-count" class="text-2xl font-black text-amber-400">0</div>
+                                <div class="text-xs text-gray-400">عضو مقاتل</div>
+                            </div>
+                            <div class="bg-black/50 border border-white/10 rounded-2xl p-3 text-center">
+                                <div class="text-2xl font-black text-orange-500">7</div>
+                                <div class="text-xs text-gray-400">رتب قيادية</div>
+                            </div>
+                            <div class="bg-black/50 border border-white/10 rounded-2xl p-3 text-center">
+                                <div class="text-2xl font-black text-red-500">#1</div>
+                                <div class="text-xs text-gray-400">تصنيف السيرفر</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 flex flex-col items-center justify-center">
+                        <div id="hero-logo-container" class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-3xl overflow-hidden border-2 border-orange-500/50 bg-black/90 shadow-2xl shadow-orange-600/35 flex items-center justify-center emblem-pulse p-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-fire-card border border-orange-500/25 rounded-3xl p-6 sm:p-8 shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4 mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-500/15 border border-orange-500/40 flex items-center justify-center text-orange-400 text-xl">
+                            <i class="fa-solid fa-scroll"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-white">قوانين ودستور عصابة KING FIRE</h3>
+                            <p class="text-sm text-gray-400">الالتزام التام بهذه القوانين شرط أساسي للبقاء داخل العصابة</p>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-bold">
+                        <i class="fa-solid fa-eye ml-1"></i> متاح للضيوف والأعضاء
+                    </span>
+                </div>
+                <div id="rules-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+
+            <div id="guest-notice-banner" class="bg-gradient-to-r from-red-950/60 via-orange-950/50 to-red-950/60 border border-orange-500/40 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4 text-center sm:text-right">
+                    <div class="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 text-2xl shrink-0">
+                        <i class="fa-solid fa-user-lock"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg text-amber-300">أنت تتصفح الموقع كـ (ضيف) حالياً</h4>
+                        <p class="text-sm text-gray-300">أقسام الأعضاء، الرتب، الأوسمة، وغرفة الحروب مقفلة. سجّل دخولك لفتحها فوراً!</p>
+                    </div>
+                </div>
+                <button onclick="openAuthModal('register')" class="fire-btn px-6 py-3 rounded-xl font-bold text-white shrink-0">
+                    <i class="fa-solid fa-user-plus ml-2"></i> سجّل الآن كعضو
+                </button>
+            </div>
+        </section>
+
+        <!-- الأعضاء -->
+        <section id="view-members" class="hidden space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-fire-card p-6 rounded-3xl border border-orange-500/20">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">قائمة مقاتلي KING FIRE</h2>
+                    <p class="text-sm text-gray-400 mt-1">تصفح جميع أعضاء العصابة، الـ ID، المستويات، الرتب، والأوسمة</p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <div class="relative">
+                        <i class="fa-solid fa-search absolute right-3 top-3.5 text-gray-400 text-sm"></i>
+                        <input type="text" id="member-search" oninput="renderMembers()" placeholder="ابحث بالاسم أو ID..." class="bg-black/60 border border-white/15 rounded-xl pr-9 pl-4 py-2.5 text-sm text-white focus:border-orange-500 focus:outline-none w-full sm:w-56">
+                    </div>
+                    <select id="member-role-filter" onchange="renderMembers()" class="bg-black/60 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:border-orange-500 focus:outline-none">
+                        <option value="all">كل الصلاحيات</option>
+                        <option value="leader">القائد (Leader)</option>
+                        <option value="admin">المشرفين (Admins)</option>
+                        <option value="member">الأعضاء (Members)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="members-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        </section>
+
+        <!-- الرتب -->
+        <section id="view-ranks" class="hidden space-y-6">
+            <div class="bg-fire-card p-6 rounded-3xl border border-orange-500/20">
+                <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">سلم الرتب والقيادة في العصابة</h2>
+                <p class="text-sm text-gray-400 mt-1">التسلسل الهرمي لرتب عصابة KING FIRE وكيفية الترقية بالنقاط</p>
+            </div>
+            <div id="ranks-container" class="space-y-4"></div>
+        </section>
+
+        <!-- الأوسمة -->
+        <section id="view-medals" class="hidden space-y-6">
+            <div class="bg-fire-card p-6 rounded-3xl border border-orange-500/20">
+                <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">أوسمة الشرف والبطولة</h2>
+                <p class="text-sm text-gray-400 mt-1">أوسمة نادرة يمنحها القائد والمشرفون للأعضاء المتميزين</p>
+            </div>
+            <div id="medals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- الحروب -->
+        <section id="view-wars" class="hidden space-y-6">
+            <div class="bg-gradient-to-r from-red-950/80 via-orange-950/70 to-black border border-orange-500/40 rounded-3xl p-6 sm:p-8 text-center fire-glow relative overflow-hidden">
+                <h3 class="text-2xl sm:text-3xl font-black text-white mb-2">حرب السيطرة الكبرى ضد DARK WOLVES</h3>
+                <p class="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto mb-6">استعدوا جيداً، التشكيلة الأساسية ستدخل الميدان في الموعد:</p>
+                <div id="war-countdown" class="grid grid-cols-4 gap-3 max-w-md mx-auto">
+                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div id="cd-days" class="text-2xl font-black text-amber-400">03</div><div class="text-[11px] text-gray-400">أيام</div></div>
+                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div id="cd-hours" class="text-2xl font-black text-orange-400">14</div><div class="text-[11px] text-gray-400">ساعة</div></div>
+                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div id="cd-mins" class="text-2xl font-black text-amber-400">45</div><div class="text-[11px] text-gray-400">دقيقة</div></div>
+                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div id="cd-secs" class="text-2xl font-black text-red-500">30</div><div class="text-[11px] text-gray-400">ثانية</div></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-1 bg-fire-card border border-amber-500/30 rounded-3xl p-6 space-y-4">
+                    <h3 class="text-xl font-black text-white border-b border-white/10 pb-3">أقوى 3 مقاتلين</h3>
+                    <div id="top-players-list" class="space-y-3"></div>
+                </div>
+                <div class="lg:col-span-2 bg-fire-card border border-orange-500/25 rounded-3xl p-6 space-y-4">
+                    <h3 class="text-xl font-black text-white border-b border-white/10 pb-3">أوامر القيادة ومواعيد الحروب</h3>
+                    <div id="announcements-list" class="space-y-4"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الشات -->
+        <section id="view-chat" class="hidden space-y-4">
+            <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6 flex flex-col h-[70vh]">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                    <h2 class="text-xl font-black text-white">غرفة الدردشة الفورية لعصابة KING FIRE</h2>
+                </div>
+                <div id="chat-messages-container" class="flex-grow overflow-y-auto space-y-3 pr-2"></div>
+                <form onsubmit="handleSendChatMessage(event)" class="mt-4 pt-4 border-t border-white/10 flex gap-3">
+                    <input type="text" id="chat-input" required placeholder="اكتب رسالتك..." class="flex-grow bg-black/70 border border-white/15 rounded-2xl px-4 py-3 text-sm text-white focus:outline-none">
+                    <button type="submit" class="fire-btn px-6 py-3 rounded-2xl font-bold text-white shrink-0">إرسال</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- لوحة الإدارة -->
+        <section id="view-admin" class="hidden space-y-8">
+            <div class="bg-gradient-to-r from-amber-950/60 to-fire-card border border-amber-500/40 rounded-3xl p-6 flex justify-between items-center">
+                <div>
+                    <span class="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 text-xs font-bold">منطقة القائد BinAli</span>
+                    <h2 class="text-2xl font-black text-white mt-2">لوحة تحكم قيادة KING FIRE</h2>
+                </div>
+                <button onclick="resetAllData()" class="px-4 py-2.5 rounded-xl bg-red-600/20 border border-red-500/40 text-red-300 text-xs font-bold">إعادة ضبط</button>
+            </div>
+
+            <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6">
+                <h3 class="text-xl font-bold text-orange-400 mb-4">طلبات الانضمام المعلقة (<span id="pending-count">0</span>)</h3>
+                <div id="pending-requests-container" class="space-y-3"></div>
+            </div>
+
+            <div class="bg-fire-card border border-white/10 rounded-3xl p-6 overflow-hidden">
+                <h3 class="text-xl font-bold text-amber-400 mb-4">التحكم في الأعضاء والنقاط والرتب والأوسمة</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right border-collapse min-w-[750px]">
+                        <thead>
+                            <tr class="border-b border-white/10 text-gray-400 text-xs uppercase bg-black/40">
+                                <th class="p-3">اللاعب (ID)</th>
+                                <th class="p-3">اللفل</th>
+                                <th class="p-3">النقاط ⭐️</th>
+                                <th class="p-3">الصلاحية</th>
+                                <th class="p-3">الرتبة</th>
+                                <th class="p-3">الأوسمة</th>
+                                <th class="p-3 text-center">إجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-members-table" class="divide-y divide-white/5 text-sm"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div id="admin-logo-box" class="bg-fire-card border border-amber-500/30 rounded-3xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-orange-400">تغيير شعار العصابة</h3>
+                    <label for="logo-upload-input" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-orange-600 to-red-600 text-white text-xs font-bold text-center cursor-pointer block">اختر صورة الشعار</label>
+                    <input type="file" id="logo-upload-input" accept="image/*" onchange="handleLogoUpload(event)" class="hidden">
+                    <button onclick="resetLogoToDefault()" class="w-full py-2 rounded-xl bg-white/5 text-xs text-gray-300 font-semibold">استعادة الشعار الافتراضي</button>
+                </div>
+                <div class="bg-fire-card border border-white/10 rounded-3xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-orange-400">إضافة قانون</h3>
+                    <input type="text" id="new-rule-title" placeholder="عنوان القانون..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
+                    <textarea id="new-rule-desc" rows="2" placeholder="التفاصيل..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></textarea>
+                    <button onclick="addNewRule()" class="w-full fire-btn py-2.5 rounded-xl text-sm font-bold text-white">نشر القانون</button>
+                </div>
+                <div class="bg-fire-card border border-white/10 rounded-3xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-orange-400">إعلان حرب</h3>
+                    <input type="text" id="new-war-title" placeholder="عنوان الإعلان..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
+                    <textarea id="new-war-desc" rows="2" placeholder="التفاصيل..." class="w-full bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></textarea>
+                    <button onclick="addNewAnnouncement()" class="w-full gold-btn py-2.5 rounded-xl text-sm">إرسال لغرفة الحروب</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- نافذة تسجيل الدخول والتسجيل -->
+    <div id="auth-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-fire-card border border-orange-500/40 rounded-3xl max-w-md w-full p-6 relative shadow-2xl fire-glow">
+            <button onclick="closeAuthModal()" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-white"><i class="fa-solid fa-xmark"></i></button>
+            <div class="flex flex-col items-center mb-4">
+                <div id="modal-logo-wrapper" class="w-24 h-16 rounded-2xl overflow-hidden border border-orange-500/50 bg-black flex items-center justify-center"></div>
+            </div>
+            <div class="flex rounded-2xl bg-black/60 p-1 mb-6 border border-white/10">
+                <button id="auth-tab-login" onclick="switchAuthMode('login')" class="flex-1 py-2.5 rounded-xl text-sm font-bold bg-orange-600 text-white">تسجيل الدخول</button>
+                <button id="auth-tab-register" onclick="switchAuthMode('register')" class="flex-1 py-2.5 rounded-xl text-sm font-bold text-gray-400">انضمام عضو جديد</button>
+            </div>
+            <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
+                <div><label class="block text-xs font-bold text-gray-300 mb-1">اسم اللاعب أو ID</label><input type="text" id="login-id" required class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-3 text-sm text-white"></div>
+                <div><label class="block text-xs font-bold text-gray-300 mb-1">كلمة المرور</label><input type="password" id="login-pass" required class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-3 text-sm text-white"></div>
+                <button type="submit" class="w-full fire-btn py-3 rounded-xl font-bold text-white">دخول</button>
+            </form>
+            <form id="register-form" onsubmit="handleRegister(event)" class="hidden space-y-3.5">
+                <div class="grid grid-cols-2 gap-3">
+                    <div><label class="block text-xs font-bold text-gray-300 mb-1">ID اللاعب</label><input type="text" id="reg-id" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                    <div><label class="block text-xs font-bold text-gray-300 mb-1">اللفل</label><input type="number" id="reg-level" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                </div>
+                <div><label class="block text-xs font-bold text-gray-300 mb-1">اسم اللاعب</label><input type="text" id="reg-name" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                <div><label class="block text-xs font-bold text-gray-300 mb-1">المستوى</label><select id="reg-tier" class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"><option value="كونكر / أسطوري">كونكر / أسطوري</option><option value="أيس / متفوق">أيس / متفوق</option><option value="تاجي">تاجي</option><option value="ماسي">ماسي</option></select></div>
+                <div><label class="block text-xs font-bold text-gray-300 mb-1">كلمة المرور</label><input type="password" id="reg-pass" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                <button type="submit" class="w-full gold-btn py-3 rounded-xl">إرسال طلب الانضمام</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ملف العضو -->
+    <div id="member-profile-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
+        <div id="member-profile-content" class="bg-fire-card border border-orange-500/40 rounded-3xl max-w-md w-full p-6 relative shadow-2xl fire-glow"></div>
+    </div>
+
+    <script>
+        const STORAGE_KEYS = {
+            USERS: 'king_fire_users_v6',
+            PENDING: 'king_fire_pending_v6',
+            CHAT: 'king_fire_chat_v6',
+            RULES: 'king_fire_rules_v6',
+            WARS: 'king_fire_wars_v6',
+            LOGO: 'king_fire_logo_v6',
+            SESSION: 'king_fire_session_v6'
+        };
+
+        const DEFAULT_SVG_LOGO = `<svg viewBox="0 0 320 320" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="320" rx="28" fill="#140c0a"/><text x="160" y="160" fill="#ffb700" font-size="40" font-weight="900" text-anchor="middle">KING FIRE</text></svg>`;
+
+        const GANG_RANKS = [
+            { id: 'king', name: 'الزعيم الأعلى (KING)', pointReq: 1000, color: 'text-amber-400', badgeBg: 'bg-amber-500/20 border-amber-500/50', icon: 'fa-crown', desc: 'القائد والزعيم.' },
+            { id: 'squad_leader', name: 'قائد مجموعة', pointReq: 700, color: 'text-yellow-400', badgeBg: 'bg-yellow-500/20 border-yellow-500/50', icon: 'fa-chess-king', desc: 'يقود مجموعة مقاتلين.' },
+            { id: 'general', name: 'مستشار الحرب', pointReq: 500, color: 'text-red-400', badgeBg: 'bg-red-500/20 border-red-500/50', icon: 'fa-chess-knight', desc: 'مخطط استراتيجي.' },
+            { id: 'elite', name: 'نخبة النار', pointReq: 300, color: 'text-orange-400', badgeBg: 'bg-orange-500/15 border-orange-500/40', icon: 'fa-bolt', desc: 'مقاتل في الخط الأمامي.' },
+            { id: 'warrior', name: 'مقاتل محترف', pointReq: 100, color: 'text-emerald-400', badgeBg: 'bg-emerald-500/15 border-emerald-500/40', icon: 'fa-khanda', desc: 'عضو نشط.' },
+            { id: 'recruit', name: 'مجند جديد', pointReq: 0, color: 'text-gray-300', badgeBg: 'bg-white/10 border-white/20', icon: 'fa-shield', desc: 'عضو جديد.' }
+        ];
+
+        const GANG_MEDALS = [
+            { id: 'war_legend', name: 'وسام أسطورة الحروب', icon: 'fa-dragon', color: 'text-red-500', bg: 'from-red-600/20 to-orange-600/10', desc: 'حسم معارك.' },
+            { id: 'golden_sniper', name: 'وسام القناص الذهبي', icon: 'fa-crosshairs', color: 'text-amber-400', bg: 'from-amber-500/20 to-yellow-600/10', desc: 'أعلى قنص.' },
+            { id: 'absolute_loyalty', name: 'وسام الولاء المطلق', icon: 'fa-heart-pulse', color: 'text-orange-400', bg: 'from-orange-500/20 to-red-600/10', desc: 'وفاء تام.' },
+            { id: 'boss_slayer', name: 'وسام قاهر الزعماء', icon: 'fa-skull', color: 'text-purple-400', bg: 'from-purple-500/20 to-pink-600/10', desc: 'هزم زعماء.' },
+            { id: 'active_flame', name: 'وسام الشعلة الدائمة', icon: 'fa-fire', color: 'text-yellow-400', bg: 'from-yellow-500/20 to-orange-500/10', desc: 'أكثر تفاعلاً.' }
+        ];
+
+        const DEFAULT_USERS = [
+            { id: '1001', name: 'BinAli', level: 99, tier: 'كونكر', password: 'alaaali161991', role: 'leader', rankId: 'king', points: 1500, medals: ['war_legend', 'absolute_loyalty', 'boss_slayer'], joinedAt: '2026-01-01' },
+            { id: '1002', name: 'KF々DRAGON', level: 84, tier: 'كونكر', password: 'mod', role: 'admin', rankId: 'squad_leader', points: 850, medals: ['golden_sniper'], joinedAt: '2026-01-10' }
+        ];
+
+        let state = { currentUser: null, users: [], pending: [], chat: [], rules: [], wars: [], customLogo: null };
+
+        window.openAuthModal = function(mode) {
+            document.getElementById('auth-modal').classList.remove('hidden');
+            window.switchAuthMode(mode);
+        };
+        window.closeAuthModal = function() { document.getElementById('auth-modal').classList.add('hidden'); };
+
+        window.switchAuthMode = function(mode) {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const btnLogin = document.getElementById('auth-tab-login');
+            const btnRegister = document.getElementById('auth-tab-register');
+            if (mode === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                btnLogin.className = 'flex-1 py-2.5 rounded-xl text-sm font-bold bg-orange-600 text-white';
+                btnRegister.className = 'flex-1 py-2.5 rounded-xl text-sm font-bold text-gray-400';
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                btnRegister.className = 'flex-1 py-2.5 rounded-xl text-sm font-bold bg-orange-600 text-white';
+                btnLogin.className = 'flex-1 py-2.5 rounded-xl text-sm font-bold text-gray-400';
+            }
+        };
+
+        window.switchTab = function(tabId) {
+            if (!state.currentUser && ['members', 'ranks', 'medals', 'wars', 'chat', 'admin'].includes(tabId)) {
+                window.showToast('يجب تسجيل الدخول أو إنشاء حساب لعرض هذا القسم.', 'error');
+                window.openAuthModal('login');
+                return;
+            }
+            if (tabId === 'admin' && state.currentUser && state.currentUser.role !== 'leader' && state.currentUser.role !== 'admin') {
+                window.showToast('هذا القسم مخصص للقائد والمشرفين فقط!', 'error');
+                return;
+            }
+            ['home', 'members', 'ranks', 'medals', 'wars', 'chat', 'admin'].forEach(t => {
+                document.getElementById(`view-${t}`).classList.add('hidden');
+                const btn = document.getElementById(`tab-${t}`);
+                if (btn) btn.classList.remove('active');
+            });
+            document.getElementById(`view-${tabId}`).classList.remove('hidden');
+            const targetBtn = document.getElementById(`tab-${tabId}`);
+            if (targetBtn) targetBtn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.handleLogin = function(event) {
+            event.preventDefault();
+            const inputId = document.getElementById('login-id').value.trim();
+            const inputPass = document.getElementById('login-pass').value;
+            const user = state.users.find(u => u.id === inputId || u.name.toLowerCase() === inputId.toLowerCase());
+            if (user && user.password === inputPass) {
+                state.currentUser = user;
+                localStorage.setItem(STORAGE_KEYS.SESSION, user.id);
+                window.closeAuthModal();
+                updateAuthUI();
+                renderMembers();
+                renderAdminPanel();
+                window.showToast(`أهلاً بك يا بطل ${user.name}!`, 'success');
+            } else {
+                window.showToast('خطأ في الـ ID أو كلمة المرور!', 'error');
+            }
+        };
+
+        window.handleRegister = function(event) {
+            event.preventDefault();
+            const id = document.getElementById('reg-id').value.trim();
+            const name = document.getElementById('reg-name').value.trim();
+            const level = parseInt(document.getElementById('reg-level').value);
+            const tier = document.getElementById('reg-tier').value;
+            const password = document.getElementById('reg-pass').value;
+
+            if (state.users.some(u => u.id === id) || state.pending.some(p => p.id === id)) {
+                window.showToast('هذا الـ ID مسجل مسبقاً أو قيد المراجعة.', 'error');
+                return;
+            }
+            state.pending.push({ id, name, level, tier, password });
+            localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
+            window.closeAuthModal();
+            renderAdminPanel();
+            window.showToast('تم إرسال طلب الانضمام للقائد بنجاح!', 'success');
+        };
+
+        window.logout = function() {
+            state.currentUser = null;
+            localStorage.removeItem(STORAGE_KEYS.SESSION);
+            updateAuthUI();
+            window.switchTab('home');
+            window.showToast('تم تسجيل الخروج بنجاح.', 'info');
+        };
+
+        window.adjustUserPoints = function(id, amount) {
+            const user = state.users.find(u => u.id === id);
+            if (!user) return;
+            user.points = Math.max(0, (user.points || 0) + amount);
+            for (const rank of GANG_RANKS) {
+                if (user.points >= rank.pointReq) { user.rankId = rank.id; break; }
+            }
+            localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
+            renderMembers();
+            renderAdminPanel();
+            window.showToast(`تم تحديث النقاط (${user.points})`, 'success');
+        };
+
+        window.approveRequest = function(id) {
+            const req = state.pending.find(p => p.id === id);
+            if (!req) return;
+            state.users.push({ ...req, role: 'member', rankId: 'recruit', points: 0, medals: [], joinedAt: '2026' });
+            state.pending = state.pending.filter(p => p.id !== id);
+            localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
+            localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
+            renderMembers();
+            renderAdminPanel();
+            updateAuthUI();
+            window.showToast(`تم قبول ${req.name} في العصابة!`, 'success');
+        };
+
+        window.rejectRequest = function(id) {
+            state.pending = state.pending.filter(p => p.id !== id);
+            localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
+            renderAdminPanel();
+            window.showToast('تم رفض الطلب.', 'info');
+        };
+
+        window.updateUserRole = function(id, role) {
+            const u = state.users.find(x => x.id === id);
+            if (u) { u.role = role; localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users)); renderMembers(); renderAdminPanel(); window.showToast('تم تحديث الصلاحية', 'success'); }
+        };
+
+        window.updateUserRank = function(id, rankId) {
+            const u = state.users.find(x => x.id === id);
+            if (u) { u.rankId = rankId; localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users)); renderMembers(); window.showToast('تم تحديث الرتبة', 'success'); }
+        };
+
+        window.toggleUserMedal = function(id, medalId) {
+            const u = state.users.find(x => x.id === id);
+            if (!u) return;
+            if (!u.medals) u.medals = [];
+            const idx = u.medals.indexOf(medalId);
+            if (idx > -1) u.medals.splice(idx, 1); else u.medals.push(medalId);
+            localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
+            renderMembers();
+            renderAdminPanel();
+            window.showToast('تم تحديث الأوسمة', 'success');
+        };
+
+        window.deleteUser = function(id) {
+            if (id === '1001') { window.showToast('لا يمكن حذف القائد!', 'error'); return; }
+            state.users = state.users.filter(u => u.id !== id);
+            localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
+            renderMembers();
+            renderAdminPanel();
+            window.showToast('تم طرد العضو.', 'info');
+        };
+
+        window.showToast = function(msg, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const t = document.createElement('div');
+            t.className = `p-4 rounded-2xl border ${type === 'success' ? 'bg-green-950 text-green-200' : type === 'error' ? 'bg-red-950 text-red-200' : 'bg-fire-card text-amber-200'} shadow-xl text-xs font-bold`;
+            t.innerHTML = msg;
+            container.appendChild(t);
+            setTimeout(() => t.remove(), 3000);
+        };
+
+        function updateAuthUI() {
+            const hc = document.getElementById('user-header-controls');
+            const guestNotice = document.getElementById('guest-notice-banner');
+            const adminTab = document.getElementById('tab-admin');
+            const statCount = document.getElementById('stat-members-count');
+            if (statCount) statCount.textContent = state.users.length;
+            ['lock-members', 'lock-ranks', 'lock-medals', 'lock-wars', 'lock-chat'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) state.currentUser ? el.classList.add('hidden') : el.classList.remove('hidden');
+            });
+
+            if (state.currentUser) {
+                hc.innerHTML = `
+                    <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-xl border border-orange-500/30">
+                        <span class="text-white text-xs font-bold">${state.currentUser.name}</span>
+                        <span class="text-amber-400 text-[10px]">LVL ${state.currentUser.level}</span>
+                    </div>
+                    <button onclick="logout()" class="px-3 py-2 rounded-xl bg-red-600/20 text-red-300 text-xs font-bold"><i class="fa-solid fa-right-from-bracket"></i></button>
+                `;
+                if (guestNotice) guestNotice.classList.add('hidden');
+                if (adminTab) {
+                    if (state.currentUser.role === 'leader' || state.currentUser.role === 'admin') adminTab.classList.remove('hidden');
+                    else adminTab.classList.add('hidden');
+                }
+            } else {
+                hc.innerHTML = `
+                    <button onclick="openAuthModal('login')" class="px-4 py-2 rounded-xl bg-white/10 text-xs font-bold text-white">تسجيل الدخول</button>
+                    <button onclick="openAuthModal('register')" class="fire-btn px-4 py-2 rounded-xl text-xs font-bold text-white">تسجيل عضو</button>
+                `;
+                if (guestNotice) guestNotice.classList.remove('hidden');
+                if (adminTab) adminTab.classList.add('hidden');
+            }
+        }
+
+        function renderMembers() {
+            const container = document.getElementById('members-grid');
+            if (!container) return;
+            container.innerHTML = state.users.map(u => {
+                const rankObj = GANG_RANKS.find(r => r.id === u.rankId) || GANG_RANKS[5];
+                return `
+                    <div class="bg-fire-card border border-orange-500/20 rounded-3xl p-5 shadow-lg flex flex-col justify-between gap-3">
+                        <div class="flex justify-between items-center">
+                            <div><h4 class="font-black text-white text-base">${u.name}</h4><span class="text-xs text-amber-400">ID: ${u.id}</span></div>
+                            <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-gray-300 text-[10px] font-bold">${u.role}</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-xs bg-black/40 p-3 rounded-2xl text-center">
+                            <div>لفل <strong>${u.level}</strong></div>
+                            <div>المرتبة <strong>${u.tier}</strong></div>
+                            <div>النقاط ⭐️ <strong>${u.points || 0}</strong></div>
+                        </div>
+                        <div class="flex justify-between items-center pt-2 border-t border-white/5 text-xs text-amber-300">
+                            <i class="fa-solid ${rankObj.icon}"></i> ${rankObj.name}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderAdminPanel() {
+            const pendingContainer = document.getElementById('pending-requests-container');
+            const pendingCount = document.getElementById('pending-count');
+            if (pendingCount) pendingCount.textContent = state.pending.length;
+            if (pendingContainer) {
+                pendingContainer.innerHTML = state.pending.length === 0 ? '<p class="text-xs text-gray-400">لا توجد طلبات معلقة.</p>' : state.pending.map(p => `
+                    <div class="flex justify-between items-center p-3 rounded-2xl bg-black/60 border border-orange-500/30 text-xs">
+                        <div><strong>${p.name}</strong> (ID: ${p.id}) - لفل ${p.level}</div>
+                        <div class="flex gap-2">
+                            <button onclick="approveRequest('${p.id}')" class="px-3 py-1 rounded bg-green-600 text-white font-bold">موافقة</button>
+                            <button onclick="rejectRequest('${p.id}')" class="px-3 py-1 rounded bg-red-600/30 text-red-300 font-bold">رفض</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const tableBody = document.getElementById('admin-members-table');
+            if (tableBody) {
+                tableBody.innerHTML = state.users.map(u => `
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3">${u.name} (ID: ${u.id})</td>
+                        <td class="p-3">لفل ${u.level}</td>
+                        <td class="p-3 font-bold text-amber-300">${u.points || 0} ⭐️ <button onclick="adjustUserPoints('${u.id}', 50)" class="text-green-400 px-1">+</button><button onclick="adjustUserPoints('${u.id}', -50)" class="text-red-400 px-1">-</button></td>
+                        <td class="p-3"><select onchange="updateUserRole('${u.id}', this.value)" class="bg-black text-xs text-white p-1 rounded"><option value="leader" ${u.role==='leader'?'selected':''}>قائد</option><option value="admin" ${u.role==='admin'?'selected':''}>مشرف</option><option value="member" ${u.role==='member'?'selected':''}>عضو</option></select></td>
+                        <td class="p-3"><select onchange="updateUserRank('${u.id}', this.value)" class="bg-black text-xs text-white p-1 rounded">${GANG_RANKS.map(r=>`<option value="${r.id}" ${u.rankId===r.id?'selected':''}>${r.name}</option>`).join('')}</select></td>
+                        <td class="p-3"><div class="flex gap-1 flex-wrap">${GANG_MEDALS.map(m=>`<button onclick="toggleUserMedal('${u.id}','${m.id}')" class="text-[9px] px-1.5 py-0.5 rounded ${u.medals&&u.medals.includes(m.id)?'bg-amber-500 text-black':'bg-black text-gray-400'}">${m.name.replace('وسام ','')}</button>`).join('')}</div></td>
+                        <td class="p-3 text-center">${u.id!=='1001'?`<button onclick="deleteUser('${u.id}')" class="text-red-400"><i class="fa-solid fa-trash"></i></button>`:'محمي'}</td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        window.onload = function() {
+            state.users = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS)) || DEFAULT_USERS;
+            state.pending = JSON.parse(localStorage.getItem(STORAGE_KEYS.PENDING)) || [];
+            const savedSession = localStorage.getItem(STORAGE_KEYS.SESSION);
+            if (savedSession) state.currentUser = state.users.find(u => u.id === savedSession);
+            
+            document.getElementById('nav-logo-wrapper').innerHTML = DEFAULT_SVG_LOGO;
+            document.getElementById('hero-logo-container').innerHTML = DEFAULT_SVG_LOGO;
+            document.getElementById('modal-logo-wrapper').innerHTML = DEFAULT_SVG_LOGO;
+
+            updateAuthUI();
+            renderMembers();
+            renderAdminPanel();
+        };
+    </script>
+</body>
+</html>
