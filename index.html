@@ -420,7 +420,19 @@
                     <div><label class="block text-xs font-bold text-gray-300 mb-1">ID اللاعب</label><input type="text" id="reg-id" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
                     <div><label class="block text-xs font-bold text-gray-300 mb-1">العمر</label><input type="number" id="reg-age" min="12" max="99" placeholder="العمر..." required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
                 </div>
-                <div><label class="block text-xs font-bold text-gray-300 mb-1">قيمة الشركة الإجمالية</label><input type="text" id="reg-company-value" placeholder="مثال: 5,000,000" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">المستوى (1 - 100)</label>
+                        <select id="reg-level" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
+                            <script>
+                                for(let i = 1; i <= 100; i++) {
+                                    document.write(`<option value="${i}">مستوى ${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                    <div><label class="block text-xs font-bold text-gray-300 mb-1">قيمة الشركة الإجمالية</label><input type="text" id="reg-company-value" placeholder="مثال: 5,000,000" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                </div>
                 <div><label class="block text-xs font-bold text-gray-300 mb-1">اسم اللاعب</label><input type="text" id="reg-name" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
                 <div><label class="block text-xs font-bold text-gray-300 mb-1">كلمة المرور</label><input type="password" id="reg-pass" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
                 <button type="submit" class="w-full gold-btn py-3 rounded-xl">إرسال طلب الانضمام</button>
@@ -477,8 +489,8 @@
         ];
 
         const DEFAULT_USERS = [
-            { id: '1001', name: 'BinAli', age: 30, companyValue: '10,000,000', password: 'alaaali161991', role: 'leader', rankId: 'king', points: 1500, medals: ['courage_medal', 'victory_medal', 'leadership_medal'], joinedAt: '2026-01-01' },
-            { id: '1002', name: 'KF々DRAGON', age: 25, companyValue: '7,500,000', password: 'mod', role: 'admin', rankId: 'squad_leader', points: 850, medals: ['flame_guard'], joinedAt: '2026-01-10' }
+            { id: '1001', name: 'BinAli', age: 30, level: 100, companyValue: '10,000,000', password: 'alaaali161991', role: 'leader', rankId: 'king', points: 1500, medals: ['courage_medal', 'victory_medal', 'leadership_medal'], joinedAt: '2026-01-01' },
+            { id: '1002', name: 'KF々DRAGON', age: 25, level: 85, companyValue: '7,500,000', password: 'mod', role: 'admin', rankId: 'squad_leader', points: 850, medals: ['flame_guard'], joinedAt: '2026-01-10' }
         ];
 
         let state = { currentUser: null, users: [], pending: [], chat: [], rules: [], wars: [], customLogo: null };
@@ -553,6 +565,7 @@
             const id = document.getElementById('reg-id').value.trim();
             const name = document.getElementById('reg-name').value.trim();
             const age = document.getElementById('reg-age').value.trim();
+            const level = parseInt(document.getElementById('reg-level').value);
             const companyValue = document.getElementById('reg-company-value').value.trim();
             const password = document.getElementById('reg-pass').value;
 
@@ -560,7 +573,7 @@
                 window.showToast('هذا الـ ID مسجل مسبقاً أو قيد المراجعة.', 'error');
                 return;
             }
-            state.pending.push({ id, name, age, companyValue, password });
+            state.pending.push({ id, name, age, level, companyValue, password });
             localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
             window.closeAuthModal();
             renderAdminPanel();
@@ -729,7 +742,8 @@
                             <div><h4 class="font-black text-white text-base">${u.name}</h4><span class="text-xs text-amber-400">ID: ${u.id} | العمر: ${u.age || 'غير محدد'}</span></div>
                             <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-gray-300 text-[10px] font-bold">${u.role}</span>
                         </div>
-                        <div class="grid grid-cols-2 gap-2 text-xs bg-black/40 p-3 rounded-2xl text-center">
+                        <div class="grid grid-cols-3 gap-2 text-xs bg-black/40 p-3 rounded-2xl text-center">
+                            <div>المستوى <strong>${u.level || 1}</strong></div>
                             <div>النقاط ⭐️ <strong>${u.points || 0}</strong></div>
                             <div>الشركة 💰 <strong>${u.companyValue || '0'}</strong></div>
                         </div>
@@ -820,7 +834,7 @@
             if (pendingContainer) {
                 pendingContainer.innerHTML = state.pending.length === 0 ? '<p class="text-xs text-gray-400">لا توجد طلبات معلقة.</p>' : state.pending.map(p => `
                     <div class="flex justify-between items-center p-3 rounded-2xl bg-black/60 border border-orange-500/30 text-xs">
-                        <div><strong>${p.name}</strong> (ID: ${p.id}) - العمر: ${p.age} - الشركة: ${p.companyValue}</div>
+                        <div><strong>${p.name}</strong> (ID: ${p.id}) - مستوى ${p.level || 1} - العمر: ${p.age} - الشركة: ${p.companyValue}</div>
                         <div class="flex gap-2">
                             <button onclick="approveRequest('${p.id}')" class="px-3 py-1 rounded bg-green-600 text-white font-bold">موافقة</button>
                             <button onclick="rejectRequest('${p.id}')" class="px-3 py-1 rounded bg-red-600/30 text-red-300 font-bold">رفض</button>
