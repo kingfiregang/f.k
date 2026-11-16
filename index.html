@@ -424,11 +424,7 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-300 mb-1">المستوى (1 - 100)</label>
                         <select id="reg-level" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white">
-                            <script>
-                                for(let i = 1; i <= 100; i++) {
-                                    document.write(`<option value="${i}">مستوى ${i}</option>`);
-                                }
-                            </script>
+                            <!-- سيتم تعبئة المستويات من 1 إلى 100 تلقائياً -->
                         </select>
                     </div>
                     <div><label class="block text-xs font-bold text-gray-300 mb-1">قيمة الشركة الإجمالية</label><input type="text" id="reg-company-value" placeholder="مثال: 5,000,000" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
@@ -859,6 +855,16 @@
         }
 
         window.onload = function() {
+            // تعبئة قائمة المستويات من 1 إلى 100 بشكل مضمون
+            const levelSelect = document.getElementById('reg-level');
+            if (levelSelect) {
+                let optionsHtml = '';
+                for (let i = 1; i <= 100; i++) {
+                    optionsHtml += `<option value="${i}">مستوى ${i}</option>`;
+                }
+                levelSelect.innerHTML = optionsHtml;
+            }
+
             state.users = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS)) || DEFAULT_USERS;
             state.pending = JSON.parse(localStorage.getItem(STORAGE_KEYS.PENDING)) || [];
             state.rules = JSON.parse(localStorage.getItem(STORAGE_KEYS.RULES)) || DEFAULT_RULES;
