@@ -422,7 +422,11 @@
             <form id="register-form" onsubmit="handleRegister(event)" class="hidden space-y-3.5">
                 <div class="grid grid-cols-2 gap-3">
                     <div><label class="block text-xs font-bold text-gray-300 mb-1">ID اللاعب</label><input type="text" id="reg-id" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
-                    <div><label class="block text-xs font-bold text-gray-300 mb-1">اللفل</label><input type="number" id="reg-level" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                    <div><label class="block text-xs font-bold text-gray-300 mb-1">اللفل (1 - 100)</label><select id="reg-level" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"><script>document.write(Array.from({length:100},(_,i)=>`<option value="${i+1}">مستوى ${i+1}</option>`).join(''))</script></select></div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div><label class="block text-xs font-bold text-gray-300 mb-1">قيمة الشركة الإجمالية</label><input type="text" id="reg-company-value" placeholder="مثال: 5,000,000" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
+                    <div><label class="block text-xs font-bold text-gray-300 mb-1">العمر</label><input type="number" id="reg-age" min="12" max="99" placeholder="العمر..." required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
                 </div>
                 <div><label class="block text-xs font-bold text-gray-300 mb-1">اسم اللاعب</label><input type="text" id="reg-name" required class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"></div>
                 <div><label class="block text-xs font-bold text-gray-300 mb-1">المستوى</label><select id="reg-tier" class="w-full bg-black/70 border border-white/15 rounded-xl px-3 py-2 text-sm text-white"><option value="كونكر / أسطوري">كونكر / أسطوري</option><option value="أيس / متفوق">أيس / متفوق</option><option value="تاجي">تاجي</option><option value="ماسي">ماسي</option></select></div>
@@ -542,6 +546,8 @@
             const id = document.getElementById('reg-id').value.trim();
             const name = document.getElementById('reg-name').value.trim();
             const level = parseInt(document.getElementById('reg-level').value);
+            const companyValue = document.getElementById('reg-company-value').value.trim();
+            const age = document.getElementById('reg-age').value.trim();
             const tier = document.getElementById('reg-tier').value;
             const password = document.getElementById('reg-pass').value;
 
@@ -549,7 +555,7 @@
                 window.showToast('هذا الـ ID مسجل مسبقاً أو قيد المراجعة.', 'error');
                 return;
             }
-            state.pending.push({ id, name, level, tier, password });
+            state.pending.push({ id, name, level, companyValue, age, tier, password });
             localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
             window.closeAuthModal();
             renderAdminPanel();
@@ -680,7 +686,7 @@
                 return `
                     <div class="bg-fire-card border border-orange-500/20 rounded-3xl p-5 shadow-lg flex flex-col justify-between gap-3">
                         <div class="flex justify-between items-center">
-                            <div><h4 class="font-black text-white text-base">${u.name}</h4><span class="text-xs text-amber-400">ID: ${u.id}</span></div>
+                            <div><h4 class="font-black text-white text-base">${u.name}</h4><span class="text-xs text-amber-400">ID: ${u.id} | العمر: ${u.age || 'غير محدد'}</span></div>
                             <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-gray-300 text-[10px] font-bold">${u.role}</span>
                         </div>
                         <div class="grid grid-cols-3 gap-2 text-xs bg-black/40 p-3 rounded-2xl text-center">
@@ -688,6 +694,7 @@
                             <div>المرتبة <strong>${u.tier}</strong></div>
                             <div>النقاط ⭐️ <strong>${u.points || 0}</strong></div>
                         </div>
+                        ${u.companyValue ? `<div class="text-[11px] text-gray-300 bg-orange-500/10 border border-orange-500/20 p-2 rounded-xl text-center">قيمة الشركة: <span class="text-amber-400 font-bold">${u.companyValue}</span></div>` : ''}
                         <div class="flex justify-between items-center pt-2 border-t border-white/5 text-xs text-amber-300">
                             <i class="fa-solid ${rankObj.icon}"></i> ${rankObj.name}
                         </div>
@@ -703,7 +710,7 @@
             if (pendingContainer) {
                 pendingContainer.innerHTML = state.pending.length === 0 ? '<p class="text-xs text-gray-400">لا توجد طلبات معلقة.</p>' : state.pending.map(p => `
                     <div class="flex justify-between items-center p-3 rounded-2xl bg-black/60 border border-orange-500/30 text-xs">
-                        <div><strong>${p.name}</strong> (ID: ${p.id}) - لفل ${p.level}</div>
+                        <div><strong>${p.name}</strong> (ID: ${p.id}) - لفل ${p.level} - العمر: ${p.age} - الشركة: ${p.companyValue}</div>
                         <div class="flex gap-2">
                             <button onclick="approveRequest('${p.id}')" class="px-3 py-1 rounded bg-green-600 text-white font-bold">موافقة</button>
                             <button onclick="rejectRequest('${p.id}')" class="px-3 py-1 rounded bg-red-600/30 text-red-300 font-bold">رفض</button>
@@ -731,17 +738,46 @@
         window.onload = function() {
             state.users = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS)) || DEFAULT_USERS;
             state.pending = JSON.parse(localStorage.getItem(STORAGE_KEYS.PENDING)) || [];
+            state.customLogo = localStorage.getItem(STORAGE_KEYS.LOGO) || null;
             const savedSession = localStorage.getItem(STORAGE_KEYS.SESSION);
             if (savedSession) state.currentUser = state.users.find(u => u.id === savedSession);
             
-            document.getElementById('nav-logo-wrapper').innerHTML = DEFAULT_SVG_LOGO;
-            document.getElementById('hero-logo-container').innerHTML = DEFAULT_SVG_LOGO;
-            document.getElementById('modal-logo-wrapper').innerHTML = DEFAULT_SVG_LOGO;
-
+            updateLogoDisplay();
             updateAuthUI();
             renderMembers();
             renderAdminPanel();
         };
+
+        window.handleLogoUpload = function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                state.customLogo = e.target.result;
+                localStorage.setItem(STORAGE_KEYS.LOGO, state.customLogo);
+                updateLogoDisplay();
+                window.showToast('تم تغيير شعار العصابة بنجاح!', 'success');
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.resetLogoToDefault = function() {
+            state.customLogo = null;
+            localStorage.removeItem(STORAGE_KEYS.LOGO);
+            updateLogoDisplay();
+            window.showToast('تمت استعادة الشعار الافتراضي.', 'info');
+        };
+
+        function updateLogoDisplay() {
+            const logoHtml = state.customLogo 
+                ? `<img src="${state.customLogo}" class="w-full h-full object-cover rounded-xl" alt="Gang Logo">` 
+                : DEFAULT_SVG_LOGO;
+            
+            ['nav-logo-wrapper', 'hero-logo-container', 'modal-logo-wrapper'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.innerHTML = logoHtml;
+            });
+        }
     </script>
 </body>
 </html>
