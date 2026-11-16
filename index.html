@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عصابة KING FIRE | الموقع الرسمي</title>
-    <!-- استدعاء خطوط عربية ملائمة للألعاب -->
+    <title>عصابة KING FIRE | الموقع الرسمي - ميراج سيتي</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <script>
@@ -112,10 +109,8 @@
 </head>
 <body class="flex flex-col">
 
-    <!-- نظام الإشعارات -->
     <div id="toast-container" class="fixed top-5 left-5 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none"></div>
 
-    <!-- الشريط العلوي -->
     <header class="sticky top-0 z-40 bg-fire-dark/90 backdrop-blur-md border-b border-orange-500/20 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
@@ -123,7 +118,7 @@
                 </div>
                 <div>
                     <h1 class="text-xl sm:text-2xl font-black tracking-wide fire-text-gradient leading-none">KING FIRE</h1>
-                    <span class="text-xs text-orange-400/90 font-semibold">ملوك النار • القوة والولاء</span>
+                    <span class="text-xs text-orange-400/90 font-semibold">ميراج سيتي • ملوك النار</span>
                 </div>
             </div>
 
@@ -153,7 +148,7 @@
                 </button>
                 <button onclick="switchTab('medals')" id="tab-medals" class="nav-tab px-4 py-2 rounded-xl border border-transparent text-sm font-bold flex items-center gap-2 transition hover:bg-white/5">
                     <i class="fa-solid fa-medal text-orange-400"></i>
-                    <span>الأوسمة</span>
+                    <span>أوسمة ميراج سيتي</span>
                 </button>
                 <button onclick="switchTab('wars')" id="tab-wars" class="nav-tab px-4 py-2 rounded-xl border border-transparent text-sm font-bold flex items-center gap-2 transition hover:bg-white/5">
                     <i class="fa-solid fa-skull-crossbones text-red-500"></i>
@@ -180,13 +175,13 @@
                     <div class="lg:col-span-7 space-y-5 text-center lg:text-right">
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/40 text-orange-300 text-xs sm:text-sm font-bold">
                             <i class="fa-solid fa-fire-flame-curved text-orange-500"></i>
-                            <span>المقر الرسمي لعصابة KING FIRE</span>
+                            <span>المقر الرسمي لعصابة KING FIRE في ميراج سيتي</span>
                         </div>
                         <h2 class="text-3xl sm:text-5xl font-black leading-tight">
-                            أهلاً بك في عرين <span class="fire-text-gradient">KING FIRE</span>
+                            السيطرة والسيادة في <span class="fire-text-gradient">MIRAGE CITY</span>
                         </h2>
                         <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                            هنا يجتمع أقوى المقاتلين تحت راية النار والتاج. سجل عضويتك الآن للوصول إلى قائمة الأعضاء، الرتب، الأوسمة، وغرفة الحروب.
+                            هنا يجتمع أبطال ميراج سيتي تحت راية النار والتاج. سجل عضويتك الآن للسيطرة على الشوارع ونيل أوسمة الشرف الكبرى.
                         </p>
 
                         <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
@@ -216,7 +211,7 @@
                     </div>
                     <div>
                         <h3 class="text-2xl font-black text-white">قوانين ودستور عصابة KING FIRE</h3>
-                        <p class="text-sm text-gray-400">الالتزام التام بهذه القوانين شرط أساسي للبقاء داخل العصابة</p>
+                        <p class="text-sm text-gray-400">قوانين ميراج سيتي والالتزام التام بتعليمات القيادة</p>
                     </div>
                 </div>
                 <div id="rules-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
@@ -227,8 +222,8 @@
         <section id="view-members" class="hidden space-y-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-fire-card p-6 rounded-3xl border border-orange-500/20">
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">قائمة مقاتلي KING FIRE</h2>
-                    <p class="text-sm text-gray-400 mt-1">تصفح جميع أعضاء العصابة، الـ ID، المستويات، والمهارات والأسلحة</p>
+                    <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">قائمة مقاتلي KING FIRE في ميراج سيتي</h2>
+                    <p class="text-sm text-gray-400 mt-1">تصفح أعضاء العصابة، مستوياتهم (من 1 إلى 100)، الأسلحة المميزة، والمهارات</p>
                 </div>
                 <input type="text" id="member-search" oninput="renderMembers()" placeholder="ابحث بالاسم أو ID..." class="bg-black/60 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none w-full sm:w-56">
             </div>
@@ -238,35 +233,35 @@
         <!-- الرتب -->
         <section id="view-ranks" class="hidden space-y-6">
             <div class="bg-fire-card p-6 rounded-3xl border border-orange-500/20">
-                <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">سلم الرتب القيادية في العصابة</h2>
-                <p class="text-sm text-gray-400 mt-1">توزيع جميع الأعضاء حسب رتبهم القيادية</p>
+                <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">سلم الرتب القيادية في ميراج سيتي</h2>
+                <p class="text-sm text-gray-400 mt-1">توزيع جميع المقاتلين حسب رتبهم في العصابة</p>
             </div>
             <div id="ranks-container" class="space-y-6"></div>
         </section>
 
-        <!-- الأوسمة (مأخوذة من شعار العصابة) -->
+        <!-- الأوسمة (أوسمة لعبة ميراج سيتي مأخوذة من شعار KING FIRE) -->
         <section id="view-medals" class="hidden space-y-6">
             <div class="bg-fire-card p-6 rounded-3xl border border-orange-500/20">
-                <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">أوسمة الشرف والبطولة (مستوحاة من شعار KING FIRE)</h2>
-                <p class="text-sm text-gray-400 mt-1">أوسمة الشرف التي تظهر أبطال العصابة الحاصلين عليها تحت شعار النار والتاج</p>
+                <h2 class="text-2xl sm:text-3xl font-black fire-text-gradient">أوسمة الشرف والبطولة (لعبة ميراج سيتي)</h2>
+                <p class="text-sm text-gray-400 mt-1">جميع أوسمة ميراج سيتي الرسمية مزينة ومأخوذة من شعار العصابة الأسطوري (KING FIRE)</p>
             </div>
-            <div id="medals-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            <div id="medals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </section>
 
         <!-- الحروب -->
         <section id="view-wars" class="hidden space-y-6">
             <div id="war-banner-box" class="bg-gradient-to-r from-red-950/80 via-orange-950/70 to-black border border-orange-500/40 rounded-3xl p-6 sm:p-8 text-center fire-glow relative overflow-hidden">
-                <h3 id="war-title-display" class="text-2xl sm:text-3xl font-black text-white mb-2">حرب السيطرة الكبرى</h3>
-                <p id="war-desc-display" class="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto mb-6">استعدوا جيداً، التشكيلة الأساسية ستدخل الميدان في الموعد المحدد.</p>
+                <h3 id="war-title-display" class="text-2xl sm:text-3xl font-black text-white mb-2">حرب السيطرة الكبرى في ميراج سيتي</h3>
+                <p id="war-desc-display" class="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto mb-6">استعدوا جيداً، معارك الميراج تتطلب أقصى درجات اليقظة والجاهزية.</p>
                 <div id="war-countdown" class="grid grid-cols-4 gap-3 max-w-md mx-auto">
-                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div class="text-2xl font-black text-amber-400">03</div><div class="text-[11px] text-gray-400">أيام</div></div>
-                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div class="text-2xl font-black text-orange-400">14</div><div class="text-[11px] text-gray-400">ساعة</div></div>
-                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div class="text-2xl font-black text-amber-400">45</div><div class="text-[11px] text-gray-400">دقيقة</div></div>
-                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div class="text-2xl font-black text-red-500">30</div><div class="text-[11px] text-gray-400">ثانية</div></div>
+                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div class="text-2xl font-black text-amber-400">02</div><div class="text-[11px] text-gray-400">أيام</div></div>
+                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div class="text-2xl font-black text-orange-400">12</div><div class="text-[11px] text-gray-400">ساعة</div></div>
+                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div class="text-2xl font-black text-amber-400">30</div><div class="text-[11px] text-gray-400">دقيقة</div></div>
+                    <div class="bg-black/60 border border-orange-500/30 rounded-2xl p-3"><div class="text-2xl font-black text-red-500">00</div><div class="text-[11px] text-gray-400">ثانية</div></div>
                 </div>
             </div>
             <div class="bg-fire-card border border-orange-500/25 rounded-3xl p-6 space-y-4">
-                <h3 class="text-xl font-black text-white border-b border-white/10 pb-3">أوامر القيادة ومواعيد المعارك</h3>
+                <h3 class="text-xl font-black text-white border-b border-white/10 pb-3">أوامر القيادة ومواعيد حروب ميراج سيتي</h3>
                 <div id="announcements-list" class="space-y-4"></div>
             </div>
         </section>
@@ -274,7 +269,7 @@
         <!-- الشات -->
         <section id="view-chat" class="hidden space-y-4">
             <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6 flex flex-col h-[70vh]">
-                <h2 class="text-xl font-black text-white mb-4">غرفة الدردشة الفورية</h2>
+                <h2 class="text-xl font-black text-white mb-4">غرفة درادشة مقاتلي ميراج سيتي</h2>
                 <div id="chat-messages-container" class="flex-grow overflow-y-auto space-y-3 pr-2"></div>
                 <form onsubmit="handleSendChatMessage(event)" class="mt-4 pt-4 border-t border-white/10 flex gap-3">
                     <input type="text" id="chat-input" required placeholder="اكتب رسالتك..." class="flex-grow bg-black/70 border border-white/15 rounded-2xl px-4 py-3 text-sm text-white focus:outline-none">
@@ -283,44 +278,43 @@
             </div>
         </section>
 
-        <!-- لوحة الإدارة المبسطة والمتحكم بكل شيء -->
+        <!-- لوحة الإدارة الشاملة -->
         <section id="view-admin" class="hidden space-y-8">
             <div class="bg-gradient-to-r from-amber-950/60 to-fire-card border border-amber-500/40 rounded-3xl p-6 flex justify-between items-center">
                 <div>
-                    <span class="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 text-xs font-bold">لوحة الإدارة الكبرى</span>
-                    <h2 class="text-2xl font-black text-white mt-2">تحكم كامل في عصابة KING FIRE</h2>
+                    <span class="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 text-xs font-bold">لوحة التحكم القيادية</span>
+                    <h2 class="text-2xl font-black text-white mt-2">إدارة عصابة KING FIRE في ميراج سيتي</h2>
                 </div>
             </div>
 
-            <!-- التحكم في غرفة الحروب مع زر حفظ مستقل -->
+            <!-- إعدادات الحرب مع زر حفظ مستقل -->
             <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6 space-y-4">
                 <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                    <h3 class="text-xl font-bold text-orange-400"><i class="fa-solid fa-skull-crossbones ml-2"></i>التحكم في غرفة الحروب والأوامر</h3>
+                    <h3 class="text-xl font-bold text-orange-400"><i class="fa-solid fa-skull-crossbones ml-2"></i>التحكم في غرفة الحروب</h3>
                     <button onclick="saveWarSettings()" class="fire-btn px-5 py-2 rounded-xl text-xs font-bold text-white">
                         <i class="fa-solid fa-floppy-disk ml-1"></i> حفظ إعدادات الحرب
                     </button>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold text-gray-300 mb-1">اسم الحرب الكبرى</label>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">اسم الحرب</label>
                         <input type="text" id="admin-war-title-input" class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-300 mb-1">تاريخ ووقت المعركة</label>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">تاريخ المعركة</label>
                         <input type="text" id="admin-war-date-input" class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white">
                     </div>
                 </div>
-
                 <div class="pt-4 border-t border-white/10 space-y-3">
-                    <h4 class="font-bold text-amber-300 text-sm">إضافة أمر قيادة جديد</h4>
+                    <h4 class="font-bold text-amber-300 text-sm">نشر أمر عسكري جديد</h4>
                     <div class="flex gap-3">
-                        <input type="text" id="admin-order-text" placeholder="اكتب أمر القيادة العسكري..." class="flex-grow bg-black/70 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white">
+                        <input type="text" id="admin-order-text" placeholder="اكتب الأمر القيادي..." class="flex-grow bg-black/70 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white">
                         <button onclick="addWarOrder()" class="gold-btn px-6 py-2.5 rounded-xl text-xs">نشر الأمر</button>
                     </div>
                 </div>
             </div>
 
-            <!-- التحكم في القوانين مع زر حفظ مستقل -->
+            <!-- القوانين مع زر حفظ مستقل -->
             <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6 space-y-4">
                 <div class="flex items-center justify-between border-b border-white/10 pb-3">
                     <h3 class="text-xl font-bold text-amber-400"><i class="fa-solid fa-scroll ml-2"></i>إدارة القوانين والدستور</h3>
@@ -329,13 +323,13 @@
                     </button>
                 </div>
                 <div class="flex gap-3">
-                    <input type="text" id="new-rule-input" placeholder="أضف قانوناً جديداً للعصابة..." class="flex-grow bg-black/70 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
+                    <input type="text" id="new-rule-input" placeholder="أضف قانوناً جديداً..." class="flex-grow bg-black/70 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none">
                     <button onclick="addNewRule()" class="gold-btn px-6 py-2.5 rounded-xl text-xs">إضافة</button>
                 </div>
                 <div id="admin-rules-list" class="space-y-2 pt-2"></div>
             </div>
 
-            <!-- التحكم في المهارات مع زر حفظ مستقل -->
+            <!-- المهارات مع زر حفظ مستقل -->
             <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6 space-y-4">
                 <div class="flex items-center justify-between border-b border-white/10 pb-3">
                     <h3 class="text-xl font-bold text-amber-400"><i class="fa-solid fa-bolt ml-2"></i>إدارة المهارات القتالية</h3>
@@ -344,7 +338,7 @@
                     </button>
                 </div>
                 <div class="flex gap-3">
-                    <input type="text" id="new-skill-input" placeholder="أضف مهارة جديدة (مثلاً: اقتحام ليلي)..." class="flex-grow bg-black/70 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none">
+                    <input type="text" id="new-skill-input" placeholder="أضف مهارة قتالية جديدة..." class="flex-grow bg-black/70 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none">
                     <button onclick="addNewSkill()" class="gold-btn px-6 py-3 rounded-xl text-xs">إضافة مهارة</button>
                 </div>
                 <div id="admin-skills-list" class="flex flex-wrap gap-2 pt-2"></div>
@@ -356,17 +350,18 @@
                 <div id="pending-requests-container" class="space-y-3"></div>
             </div>
 
-            <!-- إدارة الأعضاء والمستويات والرتب -->
+            <!-- إدارة الأعضاء والمستويات (1 إلى 100) -->
             <div class="bg-fire-card border border-white/10 rounded-3xl p-6 overflow-hidden">
-                <h3 class="text-xl font-bold text-amber-400 mb-4">قائمة الأعضاء وإدارة مستوياتهم (1 إلى 100)</h3>
+                <h3 class="text-xl font-bold text-amber-400 mb-4">قائمة الأعضاء ومستوياتهم (من 1 إلى 100)</h3>
                 <div class="overflow-x-auto">
                     <table class="w-full text-right border-collapse min-w-[850px]">
                         <thead>
                             <tr class="border-b border-white/10 text-gray-400 text-xs uppercase bg-black/40">
                                 <th class="p-3">اللاعب (ID)</th>
-                                <th class="p-3">المستوى</th>
-                                <th class="p-3">الرتبة</th>
-                                <th class="p-3">الأوسمة</th>
+                                <th class="p-3">المستوى (1-100)</th>
+                                <th class="p-3">السلاح المميز</th>
+                                <th class="p-3">المهارة</th>
+                                <th class="p-3">أوسمة ميراج سيتي</th>
                                 <th class="p-3">الصلاحية</th>
                                 <th class="p-3 text-center">إجراء</th>
                             </tr>
@@ -376,7 +371,7 @@
                 </div>
             </div>
 
-            <!-- حفظ الشعار -->
+            <!-- الشعار مع زر حفظ -->
             <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6 space-y-4">
                 <h3 class="text-lg font-bold text-orange-400">إدارة وشعار العصابة الرسمي</h3>
                 <label for="logo-upload-input" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-orange-600 to-red-600 text-white text-xs font-bold text-center cursor-pointer block">اختر صورة الشعار من جهازك</label>
@@ -439,21 +434,43 @@
 
     <script>
         const STORAGE_KEYS = {
-            USERS: 'king_fire_users_v20',
-            PENDING: 'king_fire_pending_v20',
-            SKILLS: 'king_fire_skills_v20',
-            LOGO: 'king_fire_logo_v20',
-            SESSION: 'king_fire_session_v20',
-            RULES: 'king_fire_rules_v20',
-            WAR: 'king_fire_war_v20',
-            ORDERS: 'king_fire_orders_v20'
+            USERS: 'king_fire_users_v26',
+            PENDING: 'king_fire_pending_v26',
+            SKILLS: 'king_fire_skills_v26',
+            LOGO: 'king_fire_logo_v26',
+            SESSION: 'king_fire_session_v26',
+            RULES: 'king_fire_rules_v26',
+            WAR: 'king_fire_war_v26',
+            ORDERS: 'king_fire_orders_v26'
         };
 
-        const DEFAULT_LOGO = "https://ibb.co/Ymvjdtdv.jpeg"; // استبدال بشعار العصابة المرسل
+        // شعار العصابة الأسطوري بتصميم SVG ناري وفاخر لضمان عمله دون أخطاء روابط خارجية
+        const DEFAULT_SVG_LOGO = `<svg viewBox="0 0 300 300" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="fireGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#d92600" />
+                    <stop offset="50%" stop-color="#ff5500" />
+                    <stop offset="100%" stop-color="#ffb700" />
+                </linearGradient>
+                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffb700" />
+                    <stop offset="100%" stop-color="#fff3b0" />
+                </linearGradient>
+            </defs>
+            <rect width="300" height="300" rx="35" fill="#0a0a0c" stroke="#ff5500" stroke-width="4"/>
+            <circle cx="150" cy="150" r="110" fill="none" stroke="#ff5500" stroke-width="2" stroke-dasharray="8 4" opacity="0.6"/>
+            <!-- التاج الملكي -->
+            <path d="M95 110 L110 70 L135 95 L150 55 L165 95 L190 70 L205 110 Z" fill="url(#goldGrad)" stroke="#ff5500" stroke-width="3"/>
+            <!-- شريط النار والاسم -->
+            <path d="M70 170 C100 130 200 130 230 170 C240 200 200 230 150 240 C100 230 60 200 70 170 Z" fill="#1c1c22" stroke="url(#fireGrad)" stroke-width="4"/>
+            <text x="150" y="175" fill="url(#fireGrad)" font-size="28" font-weight="900" font-family="'Cairo', sans-serif" text-anchor="middle" letter-spacing="2">KING FIRE</text>
+            <text x="150" y="205" fill="#ffb700" font-size="12" font-weight="700" font-family="'Cairo', sans-serif" text-anchor="middle" letter-spacing="3">MIRAGE CITY</text>
+        </svg>`;
+
         const DEFAULT_SKILLS = ['سائق محترف', 'اقتحام واشتباك قريب', 'خبير استطلاع وتجسس'];
         const DEFAULT_RULES = [
-            { id: 1, title: 'الاحترام المتبادل', desc: 'يمنع منعاً باتاً الشتم أو الإهانة بين الأعضاء.' },
-            { id: 2, title: 'التفاعل في الحروب', desc: 'حضور الحروب وتلبية أوامر القيادة في المواعيد المحددة.' }
+            { id: 1, title: 'قانون الولاء المطلق', desc: 'الطاعة التامة لأوامر الزعيم والمشرفين في ميراج سيتي.' },
+            { id: 2, title: 'دعم الأعضاء', desc: 'مساندة أي مقاتل من العصابة في معارك الشوارع والحروب الكبرى.' }
         ];
 
         const GANG_RANKS = [
@@ -463,10 +480,12 @@
             { id: 'member', name: 'عضو مقاتل' }
         ];
 
-        const GANG_MEDALS = [
-            { id: 'medal_fire', name: 'وسام شعلة التاج والنار', desc: 'يمنح لأقوى قادة ومقاتلي العصابة الأوائل تحت راية التاج' },
-            { id: 'medal_shield', name: 'وسام درع الولاء والدم', desc: 'يمنح للمدافعين الأبطال عن حصن العصابة' },
-            { id: 'medal_sword', name: 'وسام السيف القاطع', desc: 'يمنح للمقاتلين الحاسمين في الهجمات والغارات الكبرى' }
+        const MIRAGE_MEDALS = [
+            { id: 'mirage_king', name: 'وسام ملك ميراج سيتي', desc: 'يمنح للزعيم والقادة المسيطرين على العاصمة' },
+            { id: 'mirage_sniper', name: 'وسام قناص الميراج', desc: 'يمنح لأفضل رماة القناصة في معارك المرتفعات' },
+            { id: 'mirage_rpg', name: 'وسام مدمر المدرعات (آر بي جي)', desc: 'يمنح للمقاتل الحاسم في تدمير حصون الخصوم' },
+            { id: 'mirage_assault', name: 'وسام الاقتحام السريع', desc: 'يمنح للمقتحمين الأبطال في الغارات الليلة' },
+            { id: 'mirage_driver', name: 'وسام السائق المحترف', desc: 'يمنح لمهاري القيادة والمطاردات في شوارع الميراج' }
         ];
 
         let state = { currentUser: null, users: [], pending: [], skills: [], customLogo: null, rules: [], warConfig: {}, orders: [] };
@@ -541,7 +560,7 @@
                 updateAuthUI();
                 renderMembers();
                 renderAdminPanel();
-                window.showToast(`أهلاً بك يا بطل ${user.name}!`, 'success');
+                window.showToast(`أهلاً بك يا بطل ميراج سيتي ${user.name}!`, 'success');
             } else {
                 window.showToast('خطأ في الـ ID أو كلمة المرور!', 'error');
             }
@@ -564,7 +583,7 @@
             localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
             window.closeAuthModal();
             renderAdminPanel();
-            window.showToast('تم إرسال طلب الانضمام للقائد والمشرفين بنجاح!', 'success');
+            window.showToast('تم إرسال طلب الانضمام لقائد ومشرفي ميراج سيتي بنجاح!', 'success');
         };
 
         window.logout = function() {
@@ -575,14 +594,13 @@
             window.showToast('تم تسجيل الخروج بنجاح.', 'info');
         };
 
-        // أزرار الحفظ المستقلة في لوحة الإدارة
         window.saveWarSettings = function() {
             const title = document.getElementById('admin-war-title-input').value.trim();
             const date = document.getElementById('admin-war-date-input').value.trim();
-            state.warConfig = { title: title || 'حرب السيطرة الكبرى', date: date || 'قريباً جداً' };
+            state.warConfig = { title: title || 'حرب السيطرة الكبرى في ميراج سيتي', date: date || 'قريباً' };
             localStorage.setItem(STORAGE_KEYS.WAR, JSON.stringify(state.warConfig));
             renderWarRoom();
-            window.showToast('تم حفظ وتحديث إعدادات غرفة الحروب بنجاح! ⚔️', 'success');
+            window.showToast('تم حفظ إعدادات غرفة الحروب بنجاح! ⚔️', 'success');
         };
 
         window.saveRulesSettings = function() {
@@ -603,36 +621,33 @@
             const input = document.getElementById('new-skill-input');
             const skillName = input.value.trim();
             if (!skillName) return;
-            if (state.skills.includes(skillName)) {
-                window.showToast('هذه المهارة موجودة مسبقاً!', 'error');
-                return;
-            }
+            if (state.skills.includes(skillName)) { window.showToast('المهارة موجودة مسبقاً!', 'error'); return; }
             state.skills.push(skillName);
             input.value = '';
             renderAdminSkills();
-            window.showToast('تمت إضافة المهارة مؤقتاً، اضغط زر "حفظ المهارات" لاعتمادها.', 'info');
+            window.showToast('تمت إضافة المهارة، اضغط زر "حفظ المهارات" لاعتمادها.', 'info');
         };
 
         window.deleteSkill = function(skillName) {
             state.skills = state.skills.filter(s => s !== skillName);
             renderAdminSkills();
-            window.showToast('تم حذف المهارة، اضغط زر "حفظ المهارات" لتأكيد التغيير.', 'info');
+            window.showToast('تم حذف المهارة.', 'info');
         };
 
         window.addNewRule = function() {
             const input = document.getElementById('new-rule-input');
             const val = input.value.trim();
             if (!val) return;
-            state.rules.push({ id: Date.now(), title: 'قانون قيادي جديد', desc: val });
+            state.rules.push({ id: Date.now(), title: 'قانون جديد', desc: val });
             input.value = '';
             renderAdminRules();
-            window.showToast('تمت إضافة القانون مؤقتاً، اضغط زر "حفظ القوانين" لاعتماده.', 'info');
+            window.showToast('تمت إضافة القانون، اضغط زر "حفظ القوانين" لاعتماده.', 'info');
         };
 
         window.deleteRule = function(id) {
             state.rules = state.rules.filter(r => r.id !== id);
             renderAdminRules();
-            window.showToast('تم حذف القانون، اضغط زر "حفظ القوانين" لتأكيد التغيير.', 'info');
+            window.showToast('تم حذف القانون.', 'info');
         };
 
         window.addWarOrder = function() {
@@ -666,7 +681,7 @@
             localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(state.pending));
             renderMembers();
             renderAdminPanel();
-            window.showToast(`تم قبول العضو ${req.name} بنجاح!`, 'success');
+            window.showToast(`تم قبول المقاتل ${req.name} في ميراج سيتي بنجاح!`, 'success');
         };
 
         window.rejectRequest = function(id) {
@@ -708,28 +723,30 @@
             renderMembers();
             renderAdminPanel();
             renderMedalsPage();
-            window.showToast('تم تحديث أوسمة العضو', 'success');
+            window.showToast('تم تحديث الأوسمة بنجاح', 'success');
         };
 
         window.deleteUser = function(id) {
-            if (id === '1001') { window.showToast('لا يمكن حذف القائد الأساسي!', 'error'); return; }
+            if (id === '1001') { window.showToast('لا يمكن حذف الزعيم الأساسي!', 'error'); return; }
             state.users = state.users.filter(u => u.id !== id);
             localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(state.users));
             renderMembers();
             renderAdminPanel();
-            window.showToast('تم طرد العضو.', 'info');
+            window.showToast('تم طرد المقاتل.', 'info');
         };
 
         window.saveLogoImage = function() {
-            window.showToast('تم حفظ وتثبيت شعار العصابة بنجاح! 👑', 'success');
+            window.showToast('تم حفظ وتثبيت شعار العصابة بالموقع بنجاح! 👑', 'success');
         };
 
         window.downloadLogoImage = function() {
+            const blob = new Blob([DEFAULT_SVG_LOGO], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
-            link.href = state.customLogo || 'https://placehold.co/400x400/141418/ffb700?text=KING+FIRE';
-            link.download = 'KING_FIRE_LOGO.jpg';
+            link.href = url;
+            link.download = 'KING_FIRE_MIRAGE_LOGO.svg';
             link.click();
-            window.showToast('جاري تحميل صورة الشعار...', 'success');
+            window.showToast('جاري تحميل ملف الشعار...', 'success');
         };
 
         window.showToast = function(msg, type = 'info') {
@@ -745,11 +762,6 @@
         function updateAuthUI() {
             const hc = document.getElementById('user-header-controls');
             const adminTab = document.getElementById('tab-admin');
-            ['lock-members', 'lock-ranks', 'lock-medals', 'lock-wars', 'lock-chat'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) state.currentUser ? el.classList.add('hidden') : el.classList.remove('hidden');
-            });
-
             if (state.currentUser) {
                 hc.innerHTML = `
                     <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-xl border border-orange-500/30">
@@ -782,7 +794,7 @@
                     </div>
                     <div class="grid grid-cols-3 gap-2 text-xs bg-black/40 p-3 rounded-2xl text-center">
                         <div>المستوى <strong>${u.level}</strong></div>
-                        <div>السلاح <strong>${u.weapon || 'غير محدد'}</strong></div>
+                        <div>السلاح <strong>${u.weapon || 'رشاش'}</strong></div>
                         <div>المهارة <strong>${u.skill || 'عام'}</strong></div>
                     </div>
                 </div>
@@ -852,13 +864,13 @@
         function renderMedalsPage() {
             const container = document.getElementById('medals-grid');
             if (!container) return;
-            const logoSrc = state.customLogo || DEFAULT_LOGO;
-            container.innerHTML = GANG_MEDALS.map(medal => {
+            const logoHtml = state.customLogo ? `<img src="${state.customLogo}" class="w-full h-full object-cover rounded-xl" alt="Badge">` : DEFAULT_SVG_LOGO;
+            container.innerHTML = MIRAGE_MEDALS.map(medal => {
                 const membersWithMedal = state.users.filter(u => u.medals && u.medals.includes(medal.id));
                 return `
                     <div class="bg-fire-card border border-orange-500/30 rounded-3xl p-6 space-y-4 flex flex-col items-center text-center fire-glow">
-                        <div class="w-24 h-24 rounded-2xl overflow-hidden border-2 border-orange-500 bg-black p-1 shadow-lg">
-                            <img src="${logoSrc}" class="w-full h-full object-cover rounded-xl" alt="Medal Badge">
+                        <div class="w-28 h-28 rounded-2xl overflow-hidden border-2 border-orange-500 bg-black p-1 shadow-xl flex items-center justify-center">
+                            ${logoHtml}
                         </div>
                         <div>
                             <h3 class="text-lg font-black text-amber-400">${medal.name}</h3>
@@ -867,7 +879,7 @@
                         <div class="w-full pt-3 border-t border-white/10 space-y-2">
                             <span class="text-xs font-bold text-orange-300">أبطال الوسام (${membersWithMedal.length}):</span>
                             <div class="flex flex-wrap justify-center gap-2">
-                                ${membersWithMedal.length === 0 ? '<span class="text-xs text-gray-500">لا يوجد أبطال لهذا الوسام بعد</span>' : membersWithMedal.map(u => `
+                                ${membersWithMedal.length === 0 ? '<span class="text-xs text-gray-500">لا يوجد مقاتلون حاصلون على هذا الوسام بعد</span>' : membersWithMedal.map(u => `
                                     <div class="px-3 py-1 rounded-xl bg-black/70 border border-orange-500/40 text-xs font-bold text-white">
                                         👑 ${u.name} <span class="text-[10px] text-amber-400">(مستوى ${u.level})</span>
                                     </div>
@@ -885,20 +897,20 @@
             const titleInput = document.getElementById('admin-war-title-input');
             const dateInput = document.getElementById('admin-war-date-input');
 
-            const currentTitle = state.warConfig.title || 'حرب السيطرة الكبرى ضد DARK WOLVES';
+            const currentTitle = state.warConfig.title || 'حرب السيطرة الكبرى في ميراج سيتي';
             const currentDate = state.warConfig.date || 'الخميس القادم الساعة 9 مساءً';
 
             if (titleEl) titleEl.textContent = currentTitle;
-            if (descEl) descEl.textContent = `موعد المعركة: ${currentDate} - التشكيلة الأساسية جاهزة في الميدان.`;
+            if (descEl) descEl.textContent = `موعد معركة الميراج: ${currentDate} - التشكيلة مستعدة.`;
             if (titleInput && !titleInput.value) titleInput.value = currentTitle;
             if (dateInput && !dateInput.value) dateInput.value = currentDate;
 
             const listEl = document.getElementById('announcements-list');
             if (!listEl) return;
-            listEl.innerHTML = state.orders.length === 0 ? '<p class="text-xs text-gray-400">لا توجد أوامر قيادة حالياً.</p>' : state.orders.map(o => `
+            listEl.innerHTML = state.orders.length === 0 ? '<p class="text-xs text-gray-400">لا توجد أوامر عسكرية حالياً.</p>' : state.orders.map(o => `
                 <div class="bg-black/50 border border-white/10 p-4 rounded-2xl flex justify-between items-center text-xs">
                     <div>
-                        <div class="text-amber-300 font-bold mb-1">⚔️ أمر قيادة عسكري</div>
+                        <div class="text-amber-300 font-bold mb-1">⚔️ أمر عسكري لميراج سيتي</div>
                         <p class="text-white text-sm">${o.text}</p>
                         <span class="text-[10px] text-gray-400 mt-1 block">${o.time}</span>
                     </div>
@@ -931,8 +943,9 @@
                     <tr class="hover:bg-white/5">
                         <td class="p-3">${u.name} (ID: ${u.id})</td>
                         <td class="p-3"><input type="number" min="1" max="100" value="${u.level}" onchange="updateUserLevel('${u.id}', this.value)" class="w-16 bg-black text-white text-xs p-1 rounded border border-white/20"></td>
-                        <td class="p-3"><select onchange="updateUserRank('${u.id}', this.value)" class="bg-black text-xs text-white p-1 rounded">${GANG_RANKS.map(r=>`<option value="${r.name}" ${u.rank===r.name?'selected':''}>${r.name}</option>`).join('')}</select></td>
-                        <td class="p-3"><div class="flex gap-1 flex-wrap">${GANG_MEDALS.map(m=>`<button onclick="toggleUserMedal('${u.id}','${m.id}')" class="text-[9px] px-1.5 py-0.5 rounded ${u.medals&&u.medals.includes(m.id)?'bg-amber-500 text-black font-bold':'bg-black text-gray-400 border border-white/10'}">${m.name.replace('وسام ','')}</button>`).join('')}</div></td>
+                        <td class="p-3 text-orange-400 font-bold">${u.weapon || 'رشاش'}</td>
+                        <td class="p-3 text-amber-300">${u.skill || 'عام'}</td>
+                        <td class="p-3"><div class="flex gap-1 flex-wrap">${MIRAGE_MEDALS.map(m=>`<button onclick="toggleUserMedal('${u.id}','${m.id}')" class="text-[9px] px-1.5 py-0.5 rounded ${u.medals&&u.medals.includes(m.id)?'bg-amber-500 text-black font-bold':'bg-black text-gray-400 border border-white/10'}">${m.name.replace('وسام ','')}</button>`).join('')}</div></td>
                         <td class="p-3"><select onchange="updateUserRole('${u.id}', this.value)" class="bg-black text-xs text-white p-1 rounded"><option value="leader" ${u.role==='leader'?'selected':''}>قائد</option><option value="admin" ${u.role==='admin'?'selected':''}>مشرف</option><option value="member" ${u.role==='member'?'selected':''}>عضو</option></select></td>
                         <td class="p-3 text-center">${u.id!=='1001'?`<button onclick="deleteUser('${u.id}')" class="text-red-400"><i class="fa-solid fa-trash"></i></button>`:'محمي'}</td>
                     </tr>
@@ -946,16 +959,16 @@
 
         window.onload = function() {
             state.users = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS)) || [
-                { id: '1001', name: 'BinAli', level: 99, weapon: 'قناصة', skill: 'خبير استطلاع وتجسس', password: 'alaaali161991', role: 'leader', rank: 'الزعيم (Leader)', medals: ['medal_fire', 'medal_shield', 'medal_sword'] }
+                { id: '1001', name: 'BinAli', level: 99, weapon: 'قناصة', skill: 'خبير استطلاع وتجسس', password: 'alaaali161991', role: 'leader', rank: 'الزعيم (Leader)', medals: ['mirage_king', 'mirage_sniper', 'mirage_rpg'] }
             ];
             state.pending = JSON.parse(localStorage.getItem(STORAGE_KEYS.PENDING)) || [];
             state.skills = JSON.parse(localStorage.getItem(STORAGE_KEYS.SKILLS)) || DEFAULT_SKILLS;
             state.rules = JSON.parse(localStorage.getItem(STORAGE_KEYS.RULES)) || DEFAULT_RULES;
-            state.warConfig = JSON.parse(localStorage.getItem(STORAGE_KEYS.WAR)) || { title: 'حرب السيطرة الكبرى ضد DARK WOLVES', date: 'الخميس القادم الساعة 9 مساءً' };
+            state.warConfig = JSON.parse(localStorage.getItem(STORAGE_KEYS.WAR)) || { title: 'حرب السيطرة الكبرى في ميراج سيتي', date: 'الخميس القادم الساعة 9 مساءً' };
             state.orders = JSON.parse(localStorage.getItem(STORAGE_KEYS.ORDERS)) || [
-                { id: 1, text: 'الاستعداد للغارة الكبرى وتجهيز أسلحة القناصة والرشاشات.', time: 'اليوم' }
+                { id: 1, text: 'الاستعداد لغزو قطاع ميراج سيتي وتجهيز أسلحة القناصة والآر بي جي.', time: 'اليوم' }
             ];
-            state.customLogo = localStorage.getItem(STORAGE_KEYS.LOGO) || DEFAULT_LOGO;
+            state.customLogo = localStorage.getItem(STORAGE_KEYS.LOGO) || null;
             const savedSession = localStorage.getItem(STORAGE_KEYS.SESSION);
             if (savedSession) state.currentUser = state.users.find(u => u.id === savedSession);
             
@@ -981,7 +994,7 @@
         };
 
         function updateLogoDisplay() {
-            const logoHtml = `<img src="${state.customLogo}" class="w-full h-full object-cover rounded-xl" alt="Logo">`;
+            const logoHtml = state.customLogo ? `<img src="${state.customLogo}" class="w-full h-full object-cover rounded-xl" alt="Logo">` : DEFAULT_SVG_LOGO;
             ['nav-logo-wrapper', 'hero-logo-container', 'modal-logo-wrapper'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.innerHTML = logoHtml;
